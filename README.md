@@ -1,84 +1,107 @@
-# AI-Native Repository Template (ANR Quickstart v0.1)
+# AI Native Repository (ANR)
 
-Minimales, sofort nutzbares Template fuer Repositories, in denen Menschen und Coding-Agents zusammenarbeiten.
+ANR is a repository standard for software development where humans and AI coding agents collaborate.
 
 ## ANR Validation Status
 
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
-## AI-Native Repository Model
+## 1. Introduction
 
-- Global context: `AGENTS.md`
-- Repository navigation: `.agents/context-index.md`
-- Directory context: `*/AGENT.md`
-- Procedures: `.agents/workflows/`
-- Reusable reasoning: `.agents/skills/`
-- Constraints: `.agents/guardrails/`
+Traditional repositories were designed for human contributors only.
+Modern development increasingly includes AI coding agents.
+ANR defines how a repository can become understandable for both.
+
+## 2. The Problem
+
+Coding agents often work with incomplete context.
+Without structure, they cannot reliably answer questions like:
+
+- What is this system trying to do?
+- Which area should be changed?
+- What rules are mandatory?
+- Which process should be followed?
+
+The result is inconsistent output, unsafe edits, and repeated prompting.
+
+## 3. The Idea
+
+ANR introduces **AI Native Repositories**:
+repositories that embed structured operational knowledge directly in versioned files.
+
+Instead of relying on ad-hoc prompts, the repository itself provides persistent context for agent behavior.
+
+## 4. The Model
+
+ANR organizes context in layers:
+
+- `AGENTS.md` -> global context
+- `.agents/context-index.md` -> repository navigation
+- `*/AGENT.md` -> local domain knowledge
+- `.agents/skills/` -> reusable reasoning
+- `.agents/workflows/` -> development procedures
+- `.agents/guardrails/` -> safety constraints
 
 Design rule:
 
 `Global -> Directory -> Workflow -> Skill`
 
-## Architekturdiagramm
+## 5. Why This Matters
+
+With ANR, a repository is no longer just source code storage.
+It becomes an operating environment for AI agents:
+
+- context is explicit
+- behavior is more predictable
+- safety constraints are versioned
+- collaboration quality improves over time
+
+## Architecture Diagram
 
 ```text
-                   AI-Native Repository
+                    AI Native Repository
 
-                      AGENTS.md
-                         |
-                  Repository Context
-                         |
-       +-----------------+-----------------+
-       |                 |                 |
-    src/AGENT.md     tests/AGENT.md    tools/AGENT.md
-       |                 |                 |
-    Source Code        Test Rules      Tooling Rules
-       |                 |                 |
-       +---------------+-+--+--------------+
-                       |    |
-                .agents/workflows
-                       |
-                .agents/skills
-                       |
-               .agents/guardrails
-                       |
-                      docs/
+                        AGENTS.md
+                           |
+                    Global Context Layer
+                           |
+          +----------------+----------------+
+          |                |                |
+      src/AGENT.md    tests/AGENT.md   tools/AGENT.md
+          |                |                |
+          +----------------+----------------+
+                           |
+                   .agents/context-index
+                           |
+          +----------------+----------------+
+          |                |                |
+      .agents/skills   .agents/workflows  .agents/guardrails
+                           |
+                          docs/
 ```
 
 ## Quickstart
+
+Create a new project from this template:
 
 ```bash
 git clone <template-repo> my-project
 cd my-project
 ```
 
-Dann projektbezogene Module anlegen, z. B.:
-
-- `src/api/`
-- `src/auth/`
-- `src/database/`
-
-Optional lokale Kontexte je Modul:
-
-- `src/auth/AGENT.md`
-- `src/database/AGENT.md`
-
-## ANR CLI
-
-Die minimale CLI kann ein ANR-Repository initialisieren und validieren.
+Bootstrap or validate structure:
 
 ```bash
 node tools/anr-cli/index.js init
 node tools/anr-cli/index.js validate
 ```
 
-`init` bootstrapt die ANR-Grundstruktur.
-`validate` prueft, ob die erforderlichen ANR-Dateien und Verzeichnisse vorhanden sind.
+Then start implementing your domain in `src/` and add local context with module-level `AGENT.md` files.
 
-## Example Project
+## Philosophy
 
-Dieses Repository enthaelt ein minimales ANR-Beispielprojekt unter:
+ANR is designed to be:
 
-`examples/basic-anr-project`
-
-Das Beispiel zeigt globalen Agent-Kontext (`AGENTS.md`), directory-level Guides (`*/AGENT.md`) und eine kleine `src/` + `tests/` Struktur.
+- **Agent-neutral**: works with Claude, Cursor, Codex, and others
+- **Simple**: plain files and clear structure over heavy frameworks
+- **Open**: versioned, inspectable, and adaptable by any team
