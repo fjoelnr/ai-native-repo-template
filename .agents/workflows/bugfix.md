@@ -1,3 +1,31 @@
+---
+name: bugfix
+description: Resolve a defect with minimal risk and regression coverage.
+steps:
+  - capture_reproduction
+  - isolate_root_cause
+  - design_minimal_fix
+  - implement_fix
+  - add_regression_test
+  - run_validation_scripts
+  - document_impact
+inputs:
+  - bug_report
+  - reproduction_steps
+  - affected_component
+outputs:
+  - fix_diff
+  - regression_test
+  - impact_notes
+required_tools:
+  - git
+  - debugger
+  - test-runner
+scripts:
+  - scripts/test.ps1
+  - scripts/format.ps1
+---
+
 # Workflow: Bugfix
 
 Use this workflow for defects and regressions.
