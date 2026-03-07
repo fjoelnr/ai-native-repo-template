@@ -79,6 +79,11 @@ ANR turns your existing codebase into an AI-native development environment.
 
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
+## ANR Manifest
+
+The repository includes `anr.yaml`, a machine-readable ANR manifest.
+It allows AI coding agents to discover repository structure and core ANR components automatically.
+
 ## Inspiration
 
 The initial spark came from a post about Claude Code projects:

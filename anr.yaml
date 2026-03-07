@@ -1,0 +1,24 @@
+anr_version: 0.1
+
+repository:
+  name: ai-native-repo-template
+  type: template
+
+agent_interface:
+  global_context: AGENTS.md
+  repository_map: .agents/context-index.md
+
+directories:
+  source: src
+  tests: tests
+  tools: tools
+  documentation: docs
+
+agent_components:
+  skills: .agents/skills
+  workflows: .agents/workflows
+  guardrails: .agents/guardrails
+
+capabilities:
+  migration_supported: true
+  validation_supported: true
