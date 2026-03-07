@@ -111,6 +111,27 @@ node tools/anr-cli/index.js validate
 
 Then start implementing your domain in `src/` and add local context with module-level `AGENT.md` files.
 
+## Migrating Existing Repositories
+
+ANR is not only for new repositories.
+One of its most important use cases is migrating existing projects to a structured agent-ready model.
+
+Use the migration workflow:
+
+- `.agents/workflows/migrate-to-anr.md`
+
+This workflow helps agents and maintainers:
+
+- inspect current repository layout
+- generate global and local agent context
+- add workflows and guardrails
+- validate ANR compliance incrementally
+
+Example prompts:
+
+- `Convert this repository to ANR`
+- `Migrate this project to ANR structure`
+
 ## Philosophy
 
 ANR is designed to be:
