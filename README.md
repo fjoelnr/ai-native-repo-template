@@ -9,6 +9,7 @@ ANR makes them readable for agents.
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
 ANR is an open, agent-neutral repository standard for software development where humans and AI coding agents collaborate.
+It builds on `AGENTS.md` and extends it into a full repository architecture for AI agents.
 
 ## Quick Explanation
 
@@ -20,7 +21,26 @@ ANR is an open, agent-neutral repository standard for software development where
 
 ANR introduces a structured context layer so agents can understand and modify repositories without repeated ad-hoc prompting.
 
-## ANR Reference Architecture
+## ANR vs AGENTS.md
+
+- `AGENTS.md`: single instruction file for agent guidance.
+- `ANR`: full repository architecture including:
+  - skills
+  - workflows
+  - guardrails
+  - context index
+  - manifest (`anr.yaml`)
+
+## ANR Architecture
+
+Architecture layers:
+
+- `AGENTS.md` -> global context
+- `.agents/context-index.md` -> repository map
+- directory-level `AGENT.md` files -> local context
+- `.agents/skills/` -> reusable reasoning
+- `.agents/workflows/` -> development procedures
+- `.agents/guardrails/` -> safety constraints
 
 ```text
                            AI Coding Agents
@@ -74,6 +94,18 @@ Existing repositories can be upgraded using the migration workflow:
 
 This workflow guides agents to inspect existing structure, generate context files, define workflows and guardrails, and validate ANR compliance.
 
+Example prompt:
+
+`Convert this repository to ANR.`
+
+Expected migration sequence:
+
+1. analyze repository structure
+2. generate `AGENTS.md`
+3. create directory context files (`*/AGENT.md`)
+4. define workflows and guardrails
+5. validate ANR compliance
+
 ## Quickstart
 
 ```bash
@@ -89,7 +121,13 @@ node tools/anr-cli/index.js validate
 - Example Project: [examples/basic-anr-project](examples/basic-anr-project)
 - Migration Workflow: [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
 - ANR Manifest: [anr.yaml](anr.yaml)
+- Related Work: [docs/related-work.md](docs/related-work.md)
 - Ecosystem Registry: [registry/README.md](registry/README.md)
+
+## ANR Manifest
+
+`anr.yaml` is a machine-readable description of repository structure and ANR components.
+It allows coding agents and tools to discover context entry points automatically.
 
 ## Philosophy
 
