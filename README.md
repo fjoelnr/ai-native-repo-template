@@ -2,6 +2,10 @@
 
 Minimales, sofort nutzbares Template fuer Repositories, in denen Menschen und Coding-Agents zusammenarbeiten.
 
+## ANR Validation Status
+
+![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
+
 ## AI-Native Repository Model
 
 - Global context: `AGENTS.md`
