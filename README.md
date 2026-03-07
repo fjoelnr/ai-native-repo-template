@@ -84,6 +84,13 @@ ANR turns your existing codebase into an AI-native development environment.
 The repository includes `anr.yaml`, a machine-readable ANR manifest.
 It allows AI coding agents to discover repository structure and core ANR components automatically.
 
+## ANR Ecosystem
+
+ANR is not only a repository layout.
+It also aims to build an ecosystem of reusable skills, workflows, and example repositories.
+
+The `registry/` directory provides the foundation for sharing ANR-compatible components across projects.
+
 ## Inspiration
 
 The initial spark came from a post about Claude Code projects:
