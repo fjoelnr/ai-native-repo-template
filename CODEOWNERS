@@ -1,0 +1,6 @@
+# Global owners for baseline template maintenance
+* @fjoelnr
+
+# Agent governance files require template maintainers
+/.agents/ @fjoelnr
+/.github/ @fjoelnr
