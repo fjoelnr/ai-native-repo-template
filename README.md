@@ -74,3 +74,11 @@ node tools/anr-cli/index.js validate
 
 `init` bootstrapt die ANR-Grundstruktur.
 `validate` prueft, ob die erforderlichen ANR-Dateien und Verzeichnisse vorhanden sind.
+
+## Example Project
+
+Dieses Repository enthaelt ein minimales ANR-Beispielprojekt unter:
+
+`examples/basic-anr-project`
+
+Das Beispiel zeigt globalen Agent-Kontext (`AGENTS.md`), directory-level Guides (`*/AGENT.md`) und eine kleine `src/` + `tests/` Struktur.
