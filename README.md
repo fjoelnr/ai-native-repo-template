@@ -6,159 +6,25 @@ ANR makes them readable for agents.
 ![ANR Standard](https://img.shields.io/badge/ANR-Standard-blue)
 ![ANR Level](https://img.shields.io/badge/ANR%20Level-1-green)
 ![Migration Ready](https://img.shields.io/badge/Migration-Ready-orange)
-
-ANR is a repository standard for software development where humans and AI coding agents collaborate.
-
-## From Traditional Repository to AI Native Repository
-
-```text
-Traditional Repository                           AI Native Repository
-----------------------                           --------------------
-README.md as primary guide                       AGENTS.md + context-index
-implicit team knowledge                          directory-level AGENT.md files
-ad-hoc prompts per task                          reusable skills + workflows
-unclear edit boundaries                          explicit guardrails
-
-                    Transform
-     "Migrate this repository to ANR"
-```
-
-ANR introduces structured context for AI agents through:
-
-- `AGENTS.md`
-- `.agents/context-index.md`
-- directory-level `AGENT.md` files
-- `skills`
-- `workflows`
-- `guardrails`
-
-ANR adds a structured context layer so AI coding agents can understand repositories without repeated ad-hoc prompting.
-The model is agent-neutral and works with Codex, Cursor, Copilot, Claude, and other coding agents.
-
-Software development is entering a new phase.
-
-AI coding agents are no longer just assistants.  
-They explore repositories, run tests, and modify code.
-
-But most repositories were never designed for them.
-
-Agents are forced to guess:
-
-- where the architecture lives
-- which commands to run
-- what rules must never be broken
-
-AI Native Repositories (ANR) solve this.
-
-ANR introduces a simple structure that makes repositories understandable to AI agents:
-
-- `AGENTS.md` -> global context
-- directory `AGENT.md` -> local domain knowledge
-- `skills` -> reusable reasoning patterns
-- `workflows` -> development procedures
-- `guardrails` -> safety constraints
-
-Instead of prompting agents again and again, the repository itself contains the instructions.
-
-The repository becomes the interface between humans and AI agents.
-
-### The real breakthrough
-
-ANR does not only work for new repositories.  
-You can upgrade existing projects.
-
-Give an AI agent a single instruction:
-
-`Migrate this repository to ANR.`
-
-The agent analyzes the project, generates context files, defines workflows, and prepares the repository for AI-assisted development.
-
-ANR turns your existing codebase into an AI-native development environment.
-
-## ANR Validation Status
-
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
-## ANR Manifest
+ANR is an open, agent-neutral repository standard for software development where humans and AI coding agents collaborate.
 
-The repository includes `anr.yaml`, a machine-readable ANR manifest.
-It allows AI coding agents to discover repository structure and core ANR components automatically.
+## Quick Explanation
 
-## ANR Ecosystem
+- `README.md` explains a project to humans.
+- `AGENTS.md` explains it to AI agents.
+- `skills` provide reusable reasoning patterns.
+- `workflows` define development procedures.
+- `guardrails` define safety constraints.
 
-ANR is not only a repository layout.
-It also aims to build an ecosystem of reusable skills, workflows, and example repositories.
-
-The `registry/` directory provides the foundation for sharing ANR-compatible components across projects.
-
-## Inspiration
-
-The initial spark came from a post about Claude Code projects:
-teams saw that repositories became far more reliable for agents when context was structured in files such as `CLAUDE.md`, plus explicit skills, workflows, and guardrails.
-
-That practical pattern led to a bigger idea:
-not a single-tool convention, but a general repository standard for agent collaboration.
-
-ANR extends this idea into a tool-agnostic model that works with any coding agent.
-
-**README.md explains a project to humans.  
-AGENTS.md explains it to AI.**
-
-## 1. Introduction
-
-Traditional repositories were designed for human contributors only.
-Modern development increasingly includes AI coding agents.
-ANR defines how a repository can become understandable for both.
-
-## 2. The Problem
-
-Coding agents often work with incomplete context.
-Without structure, they cannot reliably answer questions like:
-
-- What is this system trying to do?
-- Which area should be changed?
-- What rules are mandatory?
-- Which process should be followed?
-
-The result is inconsistent output, unsafe edits, and repeated prompting.
-
-## 3. The Idea
-
-ANR introduces **AI Native Repositories**:
-repositories that embed structured operational knowledge directly in versioned files.
-
-Instead of relying on ad-hoc prompts, the repository itself provides persistent context for agent behavior.
-
-## 4. The Model
-
-ANR organizes context in layers:
-
-- `AGENTS.md` -> global context
-- `.agents/context-index.md` -> repository navigation
-- `*/AGENT.md` -> local domain knowledge
-- `.agents/skills/` -> reusable reasoning
-- `.agents/workflows/` -> development procedures
-- `.agents/guardrails/` -> safety constraints
-
-Design rule:
-
-`Global -> Directory -> Workflow -> Skill`
-
-## 5. Why This Matters
-
-With ANR, a repository is no longer just source code storage.
-It becomes an operating environment for AI agents:
-
-- context is explicit
-- behavior is more predictable
-- safety constraints are versioned
-- collaboration quality improves over time
+ANR introduces a structured context layer so agents can understand and modify repositories without repeated ad-hoc prompting.
 
 ## ANR Reference Architecture
 
 ```text
                            AI Coding Agents
-               (Codex, Cursor, Copilot, Claude)
+               (Codex, Cursor, Copilot, Claude, ...)
                                   |
                          +--------v--------+
                          |    AGENTS.md    |
@@ -166,14 +32,14 @@ It becomes an operating environment for AI agents:
                          +--------+--------+
                                   |
                          +--------v--------+
-                         |.agents/context- |
-                         |    index.md     |
+                         | .agents/context |
+                         |    -index.md    |
                          +--------+--------+
                                   |
          +------------------------+------------------------+
          |                        |                        |
    +-----v------+           +-----v------+           +-----v------+
-   | src/AGENT.md|          |tests/AGENT.md|         |docs/AGENT.md |
+   | src/AGENT.md|          |tests/AGENT.md|         |docs/AGENT.md|
    +-----+------+           +-----+------+           +-----+------+
          |                        |                        |
          +------------------------+------------------------+
@@ -185,55 +51,50 @@ It becomes an operating environment for AI agents:
  +----------------+      +-----------------+      +-----------------+
 ```
 
-ANR embeds structured context directly in the repository so AI coding agents can understand how to navigate, change, and validate code safely.
-This model works with any coding agent, including Codex, Cursor, Copilot, and Claude.
+## From Traditional Repository to AI Native Repository
+
+```text
+Traditional Repository                           AI Native Repository
+----------------------                           --------------------
+README.md as primary guide                       README.md + AGENTS.md
+implicit team knowledge                          explicit context layer
+ad-hoc prompts per task                          reusable skills/workflows
+unclear edit boundaries                          versioned guardrails
+
+                    Transform
+     "Migrate this repository to ANR"
+```
+
+## Migration Capability
+
+ANR is not only for greenfield projects.
+Existing repositories can be upgraded using the migration workflow:
+
+- [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
+
+This workflow guides agents to inspect existing structure, generate context files, define workflows and guardrails, and validate ANR compliance.
 
 ## Quickstart
-
-Create a new project from this template:
 
 ```bash
 git clone <template-repo> my-project
 cd my-project
-```
-
-Bootstrap or validate structure:
-
-```bash
 node tools/anr-cli/index.js init
 node tools/anr-cli/index.js validate
 ```
 
-Then start implementing your domain in `src/` and add local context with module-level `AGENT.md` files.
+## Key Links
 
-## Migrating Existing Repositories
-
-ANR is not only for new repositories.
-One of its most important use cases is migrating existing projects to a structured agent-ready model.
-
-Use the migration workflow:
-
-- `.agents/workflows/migrate-repository-to-anr.md`
-
-This workflow helps agents and maintainers:
-
-- inspect current repository layout
-- generate global and local agent context
-- add workflows and guardrails
-- validate ANR compliance incrementally
-
-Example prompts:
-
-- `Convert this repository to ANR`
-- `Migrate this project to ANR structure`
+- ANR Spec: [AI_NATIVE_REPO_SPEC.md](AI_NATIVE_REPO_SPEC.md)
+- Example Project: [examples/basic-anr-project](examples/basic-anr-project)
+- Migration Workflow: [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
+- ANR Manifest: [anr.yaml](anr.yaml)
+- Ecosystem Registry: [registry/README.md](registry/README.md)
 
 ## Philosophy
 
 ANR is designed to be:
 
-- **Agent-neutral**: works with Claude, Cursor, Codex, and others
-- **Simple**: plain files and clear structure over heavy frameworks
-- **Open**: versioned, inspectable, and adaptable by any team
-
-ANR is not just a template.
-It is a proposal for how software repositories evolve when AI agents become regular contributors.
+- **Agent-neutral** (works with Codex, Cursor, Copilot, Claude, and others)
+- **Simple** (plain files over complex frameworks)
+- **Open** (versioned, inspectable, and adaptable)
