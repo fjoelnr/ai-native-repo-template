@@ -1,25 +1,23 @@
 # Repository Context Index
 
-Use this file as a quick map before editing code.
+Use this file as a quick navigation map before changing code.
 
-## Architecture documentation
+## Architecture Documentation
 
 - `docs/architecture.md`
+- `docs/README.md`
 
-## Workflows
+## Project Areas
 
-- `.agents/workflows/feature-development.md`
-- `.agents/workflows/bugfix.md`
+- `src/` for implementation code
+- `tests/` for automated tests
+- `tools/` for utilities and helper scripts
 
-## Skills
+## Agent Guidance
 
-- `.agents/skills/code-review.md`
-- `.agents/skills/debugging.md`
-
-## Guardrails
-
-- `.agents/guardrails/architecture-rules.md`
-- `.agents/guardrails/forbidden-zones.md`
+- Workflows: `.agents/workflows/`
+- Skills: `.agents/skills/`
+- Guardrails: `.agents/guardrails/`
 
 ## Templates
 

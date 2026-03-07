@@ -1,9 +1,6 @@
 # Guardrail: Architecture Rules
 
-Architecture invariants:
-
-1. Keep business logic separate from delivery layers (UI/API/CLI).
-2. Changes to shared contracts require clear migration notes.
-3. Prefer small, isolated module changes over cross-repo refactors.
-
-If a task requires breaking these rules, request human review first.
+1. Keep business logic in `src/` and separate from infrastructure concerns.
+2. Maintain clear module boundaries and explicit interfaces.
+3. Require tests for behavior changes.
+4. Update docs for user-visible or architectural changes.

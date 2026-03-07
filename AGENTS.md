@@ -2,10 +2,18 @@
 
 ## Purpose
 
-This repository is a minimal AI-native template for human-agent collaboration.
-It provides stable project context, reusable workflows, and explicit guardrails.
+This repository is a minimal AI-native template for human and agent collaboration.
+It defines shared navigation, reusable workflows, and safety constraints.
 
-## Architecture documentation
+## Repository Structure
+
+- `src/` -> application source code
+- `tests/` -> automated tests
+- `tools/` -> scripts and utilities
+- `docs/` -> project documentation
+- `.agents/` -> agent workflows, skills, and rules
+
+## Architecture Documentation
 
 - `docs/architecture.md`
 
@@ -18,6 +26,7 @@ It provides stable project context, reusable workflows, and explicit guardrails.
 
 - `.agents/skills/code-review.md`
 - `.agents/skills/debugging.md`
+- `.agents/skills/refactoring.md`
 
 ## Guardrails
 
