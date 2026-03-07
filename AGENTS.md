@@ -1,55 +1,25 @@
 # AGENTS.md
 
-Primary entry point for all AI agents working in this repository.
-
 ## Purpose
 
-Define how agents navigate the repo, execute tasks safely, and collaborate with humans.
-
-## Navigation
-
-- Project overview: `README.md`
-- Agent context map: `.agents/context-index.md`
-- Registry of configured agents: `.agents/registry/agents.yaml`
+This repository is a minimal AI-native template for human-agent collaboration.
+It provides stable project context, reusable workflows, and explicit guardrails.
 
 ## Architecture documentation
 
-- Location: `docs/`
-- Suggested starting files:
-  - `docs/architecture.md`
-  - `docs/README.md`
-
-If architecture docs are missing or outdated, flag this before major changes.
+- `docs/architecture.md`
 
 ## Workflows
 
-Workflows live in `.agents/workflows/`.
-
-Use:
-- `feature-development.md` for new features
-- `bugfix.md` for incident and defect resolution
+- `.agents/workflows/feature-development.md`
+- `.agents/workflows/bugfix.md`
 
 ## Skills
 
-Skills live in `.agents/skills/`.
-
-Use:
-- `code-review.md` for structured review passes
-- `debugging.md` for root-cause analysis and fixes
+- `.agents/skills/code-review.md`
+- `.agents/skills/debugging.md`
 
 ## Guardrails
 
-Guardrails live in `.agents/guardrails/`.
-
-Always read:
-- `architecture-rules.md`
-- `forbidden-zones.md`
-
-Escalate to a human reviewer before touching restricted areas.
-
-## Local scripts for quality checks
-
-- Test: `pwsh ./scripts/test.ps1`
-- Format: `pwsh ./scripts/format.ps1`
-
-Run both before handing work back for review.
+- `.agents/guardrails/architecture-rules.md`
+- `.agents/guardrails/forbidden-zones.md`

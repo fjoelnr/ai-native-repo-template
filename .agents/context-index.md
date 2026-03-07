@@ -1,20 +1,26 @@
-# Agent Context Index
+# Repository Context Index
 
-Use this file as a quick navigation map before coding.
+Use this file as a quick map before editing code.
 
-## Primary navigation
+## Architecture documentation
 
-- Repository docs: `docs/`
-- Workflows: `.agents/workflows/`
-- Skills: `.agents/skills/`
-- Guardrails: `.agents/guardrails/`
-- Templates: `templates/`
+- `docs/architecture.md`
 
-## Recommended read order for agents
+## Workflows
 
-1. `AGENTS.md`
-2. `README.md`
-3. relevant file in `.agents/workflows/`
-4. relevant file in `.agents/skills/`
-5. `.agents/guardrails/architecture-rules.md`
-6. `.agents/guardrails/forbidden-zones.md`
+- `.agents/workflows/feature-development.md`
+- `.agents/workflows/bugfix.md`
+
+## Skills
+
+- `.agents/skills/code-review.md`
+- `.agents/skills/debugging.md`
+
+## Guardrails
+
+- `.agents/guardrails/architecture-rules.md`
+- `.agents/guardrails/forbidden-zones.md`
+
+## Templates
+
+- `templates/module-agent.md`

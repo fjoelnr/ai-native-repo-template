@@ -1,10 +1,9 @@
 # Guardrail: Architecture Rules
 
-Agents must preserve these invariants:
+Architecture invariants:
 
-1. Domain logic must not depend on UI or delivery adapters.
-2. External integrations must be wrapped behind interfaces.
-3. Shared contracts require versioned changes and migration notes.
-4. Cross-cutting concerns (auth, logging, metrics) stay centralized.
+1. Keep business logic separate from delivery layers (UI/API/CLI).
+2. Changes to shared contracts require clear migration notes.
+3. Prefer small, isolated module changes over cross-repo refactors.
 
-If a task requires breaking an invariant, stop and request human review.
+If a task requires breaking these rules, request human review first.
