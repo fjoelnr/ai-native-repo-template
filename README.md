@@ -6,6 +6,19 @@ ANR is a repository standard for software development where humans and AI coding
 
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
+## Inspiration
+
+The initial spark came from a post about Claude Code projects:
+teams saw that repositories became far more reliable for agents when context was structured in files such as `CLAUDE.md`, plus explicit skills, workflows, and guardrails.
+
+That practical pattern led to a bigger idea:
+not a single-tool convention, but a general repository standard for agent collaboration.
+
+ANR extends this idea into a tool-agnostic model that works with any coding agent.
+
+**README.md explains a project to humans.  
+AGENTS.md explains it to AI.**
+
 ## 1. Introduction
 
 Traditional repositories were designed for human contributors only.
@@ -105,3 +118,6 @@ ANR is designed to be:
 - **Agent-neutral**: works with Claude, Cursor, Codex, and others
 - **Simple**: plain files and clear structure over heavy frameworks
 - **Open**: versioned, inspectable, and adaptable by any team
+
+ANR is not just a template.
+It is a proposal for how software repositories evolve when AI agents become regular contributors.
