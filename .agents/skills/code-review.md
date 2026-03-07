@@ -1,8 +1,8 @@
 # Skill: Code Review
 
-Use this when reviewing a change set.
+Reusable procedure for high-signal reviews.
 
-1. Confirm goal and scope from `AGENTS.md` and local `AGENT.md`.
-2. Check correctness, security impact, and edge cases.
-3. Validate tests cover changed behavior.
+1. Confirm change intent and scope.
+2. Check correctness and edge cases.
+3. Validate tests for changed behavior.
 4. Report findings by severity with file references.

@@ -2,23 +2,21 @@
 
 ## Purpose
 
-This repository is a reference template for AI-native engineering.
-It gives coding agents a global operating guide and directory-level context.
+Root memory fuer AI agents in diesem Repository.
 
 ## Repository Map
 
-- `src/` application and domain code
-- `tests/` automated verification
-- `tools/` scripts and developer utilities
-- `docs/` architecture and project documentation
-- `.agents/` shared workflows, skills, and guardrails
-- `templates/` reusable scaffolding
+- `src/` application code
+- `tests/` automated tests
+- `tools/` scripts and utilities
+- `docs/` documentation
+- `.agents/` workflows, skills, guardrails
 
 ## Rules
 
-1. Read this file first, then `.agents/context-index.md`.
-2. Follow directory-level instructions in `*/AGENT.md` when working in that area.
-3. Escalate changes in forbidden zones for human review.
+1. Kontext in dieser Reihenfolge laden: global -> directory -> workflow -> skill.
+2. Lokale Regeln in `*/AGENT.md` haben Vorrang fuer das jeweilige Verzeichnis.
+3. Guardrails sind verbindlich; bei Konflikten menschliches Review einholen.
 
 ## Workflows
 
@@ -27,3 +25,5 @@ It gives coding agents a global operating guide and directory-level context.
 ## Skills
 
 - `.agents/skills/`
+
+Hinweis: Zusätzliche Anweisungen existieren in directory-level `AGENT.md` Dateien.

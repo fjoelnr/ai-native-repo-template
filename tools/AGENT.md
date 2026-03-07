@@ -2,23 +2,16 @@
 
 ## Purpose
 
-`tools/` contains scripts and utilities supporting development.
+Contains developer utilities and scripts.
 
 ## Rules
 
-1. Scripts should be idempotent when practical.
-2. Tools must not contain business logic.
-3. Prefer portable scripting approaches.
-4. Keep commands deterministic and safe to rerun.
+1. Scripts must be idempotent.
+2. Prefer portable tools (bash, python, powershell).
+3. No business logic here.
 
-## Common Patterns
+## Common patterns
 
-- One script per clear responsibility.
-- Explicit inputs and outputs.
-- Safe defaults with clear failure messages.
-
-## Preferred commands
-
-- Formatting: define one stable command in `tools/` and reference it in docs.
-- Linting: keep lint command explicit and non-interactive.
-- Tests: provide a single project-level test entry command.
+- One script per responsibility
+- Explicit inputs and outputs
+- Safe defaults

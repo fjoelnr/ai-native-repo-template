@@ -1,9 +1,0 @@
-# Global owners for baseline template maintenance
-* @fjoelnr
-
-# Agent governance files require maintainer review
-/.agents/workflows/ @fjoelnr
-/.agents/guardrails/ @fjoelnr
-/.agents/schemas/ @fjoelnr
-/.agents/ @fjoelnr
-/.github/ @fjoelnr

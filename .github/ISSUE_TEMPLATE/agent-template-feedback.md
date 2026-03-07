@@ -1,6 +1,6 @@
 ---
 name: Agent Template Feedback
-about: Report a problem or improvement for this AI-native template
+about: Report problems or improvements for this ANR template
 labels: [agent-feedback]
 ---
 

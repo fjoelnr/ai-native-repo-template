@@ -2,16 +2,16 @@
 
 ## Purpose
 
-`src/` contains application and domain code.
+Contains application source code.
 
 ## Rules
 
-1. Keep business logic in clear modules.
-2. Avoid mixing domain logic with infrastructure utilities.
-3. Keep functions focused and interfaces explicit.
+1. Keep modules small and focused.
+2. Business logic lives in `src/`.
+3. Avoid large cross-module dependencies.
 
-## Common Patterns
+## Common patterns
 
-- Group code by feature or bounded context.
-- Prefer small, composable modules.
-- Document non-obvious design decisions inline.
+- Explicit module boundaries
+- Clear interfaces
+- Small, reviewable changes

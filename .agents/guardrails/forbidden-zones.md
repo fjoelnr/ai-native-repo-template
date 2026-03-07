@@ -6,7 +6,7 @@ Human review required before changing:
 2. `.agents/workflows/`
 3. `.github/ISSUE_TEMPLATE/`
 
-Agents should not automatically modify:
-- repository policy files (`AGENTS.md`, `CODEOWNERS`)
-- git history of protected branches
-- files containing credentials or secrets
+Agents must not automatically:
+- modify protected branch history
+- commit credentials or secrets
+- remove policy files without approval

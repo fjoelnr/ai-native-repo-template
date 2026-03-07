@@ -1,9 +1,8 @@
 # Skill: Debugging
 
-Use this for incidents and failing tests.
+Reusable procedure for fast, safe bug resolution.
 
-1. Reproduce and capture exact failure evidence.
-2. Narrow failure to one component.
+1. Reproduce and capture failure evidence.
+2. Isolate the smallest failing component.
 3. Test one root-cause hypothesis at a time.
-4. Implement the smallest safe fix.
-5. Verify with regression checks.
+4. Implement minimal fix and verify regression coverage.

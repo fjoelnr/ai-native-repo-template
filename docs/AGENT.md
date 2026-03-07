@@ -2,16 +2,16 @@
 
 ## Purpose
 
-`docs/` stores architecture and project documentation.
+Contains architecture and project documentation.
 
 ## Rules
 
-1. Keep docs aligned with current repository behavior.
-2. Prefer concise sections with clear headings.
-3. Record architectural decisions and constraints.
+1. Keep documentation aligned with implementation.
+2. Explain intent before details.
+3. Update docs when behavior changes.
 
-## Common Patterns
+## Common patterns
 
-- Explain intent before implementation details.
-- Link related files and modules.
-- Update docs in the same change as behavior updates.
+- Short sections with clear headings
+- Linked references to source paths
+- Explicit assumptions and constraints
