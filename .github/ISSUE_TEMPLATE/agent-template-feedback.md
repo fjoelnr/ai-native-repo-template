@@ -4,23 +4,20 @@ about: Report unclear instructions, missing context, or execution issues in this
 labels: [agent-feedback]
 ---
 
-## Agent
-Which agent reported this?
+## Agent Name
 - [ ] claude
 - [ ] cursor
 - [ ] codex
 - [ ] antigravity
 
-## Problem Summary
-Describe what failed or was ambiguous.
+## Workflow Used
+Which workflow file was used (for example `.agents/workflows/bugfix.md`)?
 
-## Reproduction Context
-- Task type:
-- Files touched:
-- Commands executed:
+## Context
+Describe the task context and relevant constraints.
 
-## Expected Guidance
-What guidance did the agent need but could not find?
+## Failure Mode
+What failed: wrong output, missing guidance, unsafe suggestion, or blocked execution?
 
-## Suggested Fix
-Propose a concise improvement to docs, workflows, skills, or guardrails.
+## Suggested Improvement
+Propose a concise change to workflows, skills, guardrails, schema, or docs.

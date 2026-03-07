@@ -1,0 +1,24 @@
+name: Validate Agents
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate-agent-infra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependencies
+        run: pip install pyyaml
+
+      - name: Validate agent YAML and workflows
+        run: python scripts/validate_agent_infra.py
