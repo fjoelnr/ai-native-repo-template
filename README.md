@@ -9,7 +9,7 @@ ANR makes them readable for agents.
 
 ANR is a repository standard for software development where humans and AI coding agents collaborate.
 
-## From Traditional Repository to ANR
+## From Traditional Repository to AI Native Repository
 
 ```text
 Traditional Repository                           AI Native Repository
@@ -31,6 +31,9 @@ ANR introduces structured context for AI agents through:
 - `skills`
 - `workflows`
 - `guardrails`
+
+ANR adds a structured context layer so AI coding agents can understand repositories without repeated ad-hoc prompting.
+The model is agent-neutral and works with Codex, Cursor, Copilot, Claude, and other coding agents.
 
 Software development is entering a new phase.
 
@@ -139,7 +142,7 @@ It becomes an operating environment for AI agents:
 - safety constraints are versioned
 - collaboration quality improves over time
 
-## ANR Architecture
+## ANR Reference Architecture
 
 ```text
                            AI Coding Agents
