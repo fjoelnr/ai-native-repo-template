@@ -1,13 +1,44 @@
 agents:
   - id: claude
-    entry: CLAUDE.md
-    description: Guidance for Claude-based agent runs
+    entry_file: CLAUDE.md
+    capabilities:
+      - reasoning
+      - planning
+      - code-review
+    preferred_tasks:
+      - requirements-analysis
+      - architecture-review
+      - pull-request-review
+
   - id: cursor
-    entry: CURSOR.md
-    description: Guidance for Cursor sessions
+    entry_file: CURSOR.md
+    capabilities:
+      - code-generation
+      - refactoring
+      - iterative-debugging
+    preferred_tasks:
+      - feature-implementation
+      - local-refactors
+      - test-updates
+
   - id: codex
-    entry: AGENTS.md
-    description: Canonical repo-wide policy for all agents
+    entry_file: AGENTS.md
+    capabilities:
+      - repository-navigation
+      - automated-editing
+      - validation
+    preferred_tasks:
+      - end-to-end-task-execution
+      - infra-updates
+      - docs-and-code-sync
+
   - id: antigravity
-    entry: ANTIGRAVITY.md
-    description: Experimental autonomous-coding guidance
+    entry_file: ANTIGRAVITY.md
+    capabilities:
+      - autonomous-execution
+      - experimentation
+      - hypothesis-testing
+    preferred_tasks:
+      - prototype-spikes
+      - failure-investigation
+      - constrained-autonomous-runs
