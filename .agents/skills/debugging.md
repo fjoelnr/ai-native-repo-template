@@ -1,13 +1,13 @@
 # Skill: Debugging
 
-Purpose: Find root cause quickly and fix with minimal risk.
+Goal: Identify root cause quickly and fix safely.
 
-Process:
-1. Reproduce the issue reliably.
-2. Narrow scope to the failing module.
-3. Validate one hypothesis at a time.
-4. Implement smallest safe fix.
-5. Add or update regression test.
+Steps:
+1. Reproduce the issue and capture evidence.
+2. Narrow the failing path to one module.
+3. Test one hypothesis at a time.
+4. Implement the smallest reliable fix.
+5. Validate with regression checks.
 
 Output:
 - Reproduction

@@ -1,11 +1,11 @@
 # Skill: Code Review
 
-Purpose: Produce consistent, high-signal review feedback.
+Goal: Produce actionable review feedback with low noise.
 
-Process:
-1. Understand intent and acceptance criteria.
-2. Check correctness, security, and edge cases.
-3. Verify tests cover changed behavior.
+Steps:
+1. Confirm intent and acceptance criteria.
+2. Check correctness, edge cases, and security impact.
+3. Verify test coverage for changed behavior.
 4. Report findings by severity with file references.
 
 Output:
