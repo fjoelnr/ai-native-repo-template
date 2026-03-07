@@ -29,6 +29,50 @@ This template provides a clean baseline for new projects so teams can:
 
 The result is faster iteration with clear accountability.
 
+## AI-Native Repository Model
+
+- Global context: `AGENTS.md`
+- Repository navigation: `.agents/context-index.md`
+- Directory context: `*/AGENT.md`
+- Procedures: `.agents/workflows/`
+- Reusable reasoning: `.agents/skills/`
+- Constraints: `.agents/guardrails/`
+
+Design rule: guidance becomes more specific as scope narrows.
+
+`Global -> Directory -> Workflow -> Skill`
+
+## Architecture Diagram
+
+```text
+                +--------------+
+                |  AGENTS.md   |
+                | Global Rules |
+                +------+-------+
+                       |
+                +------v--------+
+                | context-index |
+                | Repo Map      |
+                +------+--------+
+                       |
+      +----------------+----------------+
+      |                |                |
++-----v-----+    +-----v------+    +----v------+
+| src/      |    | tests/     |    | tools/    |
+| AGENT.md  |    | AGENT.md   |    | AGENT.md  |
++-----+-----+    +-----+------+    +----+------+
+      |                |                |
+      +-----------+----+----+-----------+
+                  |         |
+             +----v----+ +--v-------+
+             | skills  | |workflows |
+             +----+----+ +---+------+
+                  |          |
+                  +----+-----+
+                       |
+                  guardrails
+```
+
 ## How to use this template for a new project
 
 1. Create a new repository from this template.
@@ -41,6 +85,8 @@ The result is faster iteration with clear accountability.
 
 - `.agents/` agent operating model
 - `docs/` architecture and project documentation
-- `scripts/` test, format, and maintenance scripts
+- `src/` application code
+- `tests/` automated tests
+- `tools/` utility scripts
 - `templates/` reusable project artifacts
 - `.github/` governance and automation

@@ -2,6 +2,15 @@
 
 Use this map to find the right context before making changes.
 
+## Loading order
+
+1. `AGENTS.md`
+2. `.agents/context-index.md`
+3. nearest directory `AGENT.md` (for example `src/AGENT.md`)
+4. relevant workflow in `.agents/workflows/`
+5. relevant skills in `.agents/skills/`
+6. `.agents/guardrails/`
+
 ## Core Project Areas
 
 - `src/` implementation code (`src/AGENT.md`)
