@@ -1,0 +1,89 @@
+name: ANR Validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-anr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required files
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+
+          required_files=(
+            "AGENTS.md"
+            ".agents/context-index.md"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $file"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Validate required directories
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+
+          required_dirs=(
+            "src"
+            "tests"
+            "tools"
+            "docs"
+            ".agents"
+            ".agents/skills"
+            ".agents/workflows"
+            ".agents/guardrails"
+          )
+
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "Missing required directory: $dir/"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Validate directory-level agent guides
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+
+          required_guides=(
+            "src/AGENT.md"
+            "tests/AGENT.md"
+            "tools/AGENT.md"
+            "docs/AGENT.md"
+          )
+
+          for guide in "${required_guides[@]}"; do
+            if [ ! -f "$guide" ]; then
+              echo "Missing required file: $guide"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Validation summary
+        run: echo "ANR validation passed"
