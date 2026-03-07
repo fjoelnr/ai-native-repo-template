@@ -1,10 +1,10 @@
 # Guardrail: Architecture Rules
 
-Rules:
-1. Keep business logic out of UI and transport layers.
-2. Enforce clear module boundaries and public interfaces.
-3. Prefer composition over deep inheritance.
-4. Add tests for cross-module contracts.
+Agents must preserve these invariants:
 
-Review check:
-- Does this change increase coupling across layers?
+1. Domain logic must not depend on UI or delivery adapters.
+2. External integrations must be wrapped behind interfaces.
+3. Shared contracts require versioned changes and migration notes.
+4. Cross-cutting concerns (auth, logging, metrics) stay centralized.
+
+If a task requires breaking an invariant, stop and request human review.

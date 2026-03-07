@@ -1,14 +1,20 @@
 # Skill: Code Review
 
-Purpose: Provide consistent, high-signal reviews for pull requests.
+Use this skill to run consistent, high-signal reviews.
 
-Steps:
-1. Summarize the change intent from diff and issue context.
-2. Identify correctness, security, and performance risks.
-3. Report findings by severity with exact file and line references.
-4. Suggest concrete fixes and minimal test additions.
+## Inputs
+- Pull request diff
+- Related issue or acceptance criteria
+- Changed tests and CI status
 
-Output format:
-- Findings (critical to low)
-- Open questions
-- Suggested patch plan
+## Process
+1. Identify user-visible behavior changes.
+2. Check correctness, security, and data integrity.
+3. Check maintainability and architecture alignment.
+4. Verify tests cover happy path and edge cases.
+5. Report findings ordered by severity.
+
+## Output
+- `Findings`: clear defect/risk statements with file references
+- `Questions`: assumptions that need confirmation
+- `Next actions`: minimal patch and test suggestions

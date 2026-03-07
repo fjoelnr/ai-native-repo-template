@@ -1,15 +1,21 @@
 # Skill: Debugging
 
-Purpose: Reduce time-to-fix for failing builds, tests, and runtime errors.
+Use this skill when behavior diverges from expectations.
 
-Steps:
-1. Reproduce the issue and capture exact error output.
-2. Narrow scope with logs, assertions, and binary search in code paths.
-3. Form one root-cause hypothesis at a time and validate quickly.
-4. Implement smallest safe fix and add regression coverage.
+## Inputs
+- Error message or failing test
+- Reproduction steps
+- Relevant logs and stack traces
 
-Output format:
-- Reproduction
-- Root cause
-- Fix
-- Regression test
+## Process
+1. Reproduce reliably and capture baseline output.
+2. Narrow the failure surface to one subsystem.
+3. Form and test one hypothesis at a time.
+4. Implement the smallest safe fix.
+5. Add regression coverage and verify no side effects.
+
+## Output
+- `Reproduction`
+- `Root cause`
+- `Fix`
+- `Regression test`

@@ -1,14 +1,16 @@
 # Workflow: Feature Development
 
-Goal: Deliver new features with AI-human collaboration.
+Use this workflow for net-new capabilities.
 
-Phases:
-1. Clarify acceptance criteria and constraints.
-2. Propose implementation plan and test strategy.
-3. Implement in small, reviewable commits.
-4. Run tests, update docs, and prepare PR summary.
+## Steps
+1. Read requirements and define acceptance criteria.
+2. Confirm impacted modules and architecture boundaries.
+3. Create an implementation plan with test plan.
+4. Implement in small commits with clear scope.
+5. Run tests, formatting, and lint checks.
+6. Update docs and prepare merge summary.
 
-Definition of done:
-- Acceptance criteria met
+## Completion criteria
+- Acceptance criteria satisfied
 - Tests added or updated
-- Documentation updated
+- Docs updated for behavior changes

@@ -1,14 +1,16 @@
 # Workflow: Bugfix
 
-Goal: Resolve defects with minimal risk and clear verification.
+Use this workflow for defects and regressions.
 
-Phases:
-1. Capture failing behavior and reproduction steps.
-2. Identify root cause and impacted areas.
-3. Apply minimal fix with regression test.
-4. Validate in CI and document user-facing impact.
+## Steps
+1. Capture exact reproduction and expected behavior.
+2. Identify root cause and impacted components.
+3. Implement minimal fix with low blast radius.
+4. Add regression test that fails before and passes after.
+5. Validate locally and in CI.
+6. Document impact and rollback strategy if needed.
 
-Definition of done:
+## Completion criteria
 - Bug reproduced before fix
 - Regression test prevents recurrence
-- Release notes updated if applicable
+- Risk assessment documented

@@ -1,0 +1,13 @@
+agents:
+  - id: claude
+    entry: CLAUDE.md
+    description: Guidance for Claude-based agent runs
+  - id: cursor
+    entry: CURSOR.md
+    description: Guidance for Cursor sessions
+  - id: codex
+    entry: AGENTS.md
+    description: Canonical repo-wide policy for all agents
+  - id: antigravity
+    entry: ANTIGRAVITY.md
+    description: Experimental autonomous-coding guidance
