@@ -1,23 +1,20 @@
 ---
 name: Agent Template Feedback
-about: Report unclear instructions, missing context, or execution issues in this template
+about: Report issues with the AI-native repository template
 labels: [agent-feedback]
 ---
 
-## Agent Name
-- [ ] claude
-- [ ] cursor
-- [ ] codex
-- [ ] antigravity
+## Agent name
+Which agent reported this?
 
-## Workflow Used
-Which workflow file was used (for example `.agents/workflows/bugfix.md`)?
+## Workflow used
+Which workflow file was used?
 
 ## Context
-Describe the task context and relevant constraints.
+What task/context was the agent working in?
 
-## Failure Mode
-What failed: wrong output, missing guidance, unsafe suggestion, or blocked execution?
+## Problem description
+What failed, was unclear, or missing?
 
-## Suggested Improvement
-Propose a concise change to workflows, skills, guardrails, schema, or docs.
+## Suggested improvement
+What change would improve this template?
