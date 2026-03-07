@@ -21,7 +21,7 @@ It builds on `AGENTS.md` and extends it into a full repository architecture for 
 
 ANR introduces a structured context layer so agents can understand and modify repositories without repeated ad-hoc prompting.
 
-## ANR vs AGENTS.md
+## Relationship to AGENTS.md
 
 - `AGENTS.md`: single instruction file for agent guidance.
 - `ANR`: full repository architecture including:
@@ -30,6 +30,25 @@ ANR introduces a structured context layer so agents can understand and modify re
   - guardrails
   - context index
   - manifest (`anr.yaml`)
+
+ANR builds on `AGENTS.md` and turns it into a full repository architecture for AI agents.
+
+## Relationship to MCP
+
+MCP standardizes how agents access external tools and services.
+ANR standardizes how repositories expose structured context to agents.
+
+```text
+AI Agent
+   |
+ANR (repository interface)
+   |
+MCP (tool interface)
+   |
+tools and services
+```
+
+ANR and MCP are complementary layers in an agent-native development stack.
 
 ## ANR Architecture
 
@@ -41,6 +60,7 @@ Architecture layers:
 - `.agents/skills/` -> reusable reasoning
 - `.agents/workflows/` -> development procedures
 - `.agents/guardrails/` -> safety constraints
+- `anr.yaml` -> machine-readable repository metadata
 
 ```text
                            AI Coding Agents
@@ -69,6 +89,11 @@ Architecture layers:
  +------v---------+      +--------v--------+      +--------v--------+
  | .agents/skills |      |.agents/workflows|      |.agents/guardrails|
  +----------------+      +-----------------+      +-----------------+
+                                  |
+                         +--------v--------+
+                         |    anr.yaml     |
+                         | Machine Metadata|
+                         +-----------------+
 ```
 
 ## From Traditional Repository to AI Native Repository

@@ -1,40 +1,49 @@
 # Related Work
 
-This document explains how ANR relates to existing conventions for guiding coding agents.
+This document summarizes adjacent conventions and standards in the AI coding agent ecosystem.
 
-## Existing concepts
+## AGENTS.md
 
-### AGENTS.md
+`AGENTS.md` is currently the most widely used open standard for guiding coding agents at repository level.
+It provides a common, discoverable instruction file for agent behavior.
 
-`AGENTS.md` defines instructions for coding agents in a repository.
-It is currently the most widely used open standard for guiding agent behavior.
+Strength:
+- simple and portable
 
-### CLAUDE.md
+Limitation:
+- single-file guidance without full repository architecture
 
-`CLAUDE.md` is a tool-specific instruction convention used in Claude Code setups.
-It usually captures project guidance for Claude-based agents.
+## CLAUDE.md
 
-### .cursorrules
+`CLAUDE.md` is a tool-specific instruction pattern used in Claude-oriented workflows.
+It provides useful local guidance but is not a cross-tool architecture standard.
 
-`.cursorrules` is a Cursor-specific rule file that provides agent instructions inside Cursor workflows.
+## Cursor Rules (`.cursorrules`)
 
-### Agent Skills
+Cursor rules are editor/tool-specific directives for Cursor sessions.
+They improve behavior within Cursor, but are not a general repository-wide architecture.
 
-Skills are reusable task patterns (for example code review, debugging, refactoring) that can be invoked across projects.
+## Model Context Protocol (MCP)
 
-## ANR vs AGENTS.md
+MCP is an open standard for connecting AI systems to tools and data sources.
+It addresses tool discovery and invocation across services.
 
-`AGENTS.md` is a single instruction file.
+MCP defines the **tool interface layer**.
+It does not define how repositories structure agent context internally.
 
-ANR builds on that foundation and introduces a full repository architecture layer including:
+## ANR Position
 
+ANR builds on `AGENTS.md` and extends it into a repository architecture with:
+
+- context index
+- directory-level context files
 - skills
 - workflows
 - guardrails
-- context index
 - manifest (`anr.yaml`)
 
 In short:
 
-- `AGENTS.md` explains baseline behavior.
-- ANR defines how the whole repository is structured for consistent human-agent collaboration.
+- `AGENTS.md` -> instruction file
+- `MCP` -> tool interface
+- `ANR` -> repository architecture for agent-native development
