@@ -12,20 +12,22 @@ ANR is a repository standard for software development where humans and AI coding
 ## From Traditional Repository to ANR
 
 ```text
-Traditional Repository                     AI Native Repository
-----------------------                     --------------------
-README.md as primary guide                 README.md + AGENTS.md
-implicit team knowledge                    explicit agent context
-ad-hoc prompts per task                    reusable skills/workflows
-unclear edit boundaries                    guardrails and constraints
+Traditional Repository                           AI Native Repository
+----------------------                           --------------------
+README.md as primary guide                       AGENTS.md + context-index
+implicit team knowledge                          directory-level AGENT.md files
+ad-hoc prompts per task                          reusable skills + workflows
+unclear edit boundaries                          explicit guardrails
 
-                 Transform
- "Migrate this repository to ANR"
+                    Transform
+     "Migrate this repository to ANR"
 ```
 
 ANR introduces structured context for AI agents through:
 
 - `AGENTS.md`
+- `.agents/context-index.md`
+- directory-level `AGENT.md` files
 - `skills`
 - `workflows`
 - `guardrails`
@@ -149,14 +151,14 @@ It becomes an operating environment for AI agents:
                          +--------+--------+
                                   |
                          +--------v--------+
-                         |  context-index  |
-                         | Repository Map  |
+                         |.agents/context- |
+                         |    index.md     |
                          +--------+--------+
                                   |
          +------------------------+------------------------+
          |                        |                        |
    +-----v------+           +-----v------+           +-----v------+
-   | src/AGENT.md|          |tests/AGENT.md|         |tools/AGENT.md|
+   | src/AGENT.md|          |tests/AGENT.md|         |docs/AGENT.md |
    +-----+------+           +-----+------+           +-----+------+
          |                        |                        |
          +------------------------+------------------------+
@@ -168,8 +170,8 @@ It becomes an operating environment for AI agents:
  +----------------+      +-----------------+      +-----------------+
 ```
 
-ANR introduces structured repository context so AI coding agents can understand how to work safely and consistently.
-The model is agent-neutral and works with Codex, Cursor, Copilot, Claude, and other coding agents.
+ANR embeds structured context directly in the repository so AI coding agents can understand how to navigate, change, and validate code safely.
+This model works with any coding agent, including Codex, Cursor, Copilot, and Claude.
 
 ## Quickstart
 
