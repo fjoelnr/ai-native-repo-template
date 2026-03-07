@@ -1,14 +1,8 @@
 # Skill: Code Review
 
-Goal: Produce actionable review feedback with low noise.
+Use this when reviewing a change set.
 
-Steps:
-1. Confirm intent and acceptance criteria.
-2. Check correctness, edge cases, and security impact.
-3. Verify test coverage for changed behavior.
+1. Confirm goal and scope from `AGENTS.md` and local `AGENT.md`.
+2. Check correctness, security impact, and edge cases.
+3. Validate tests cover changed behavior.
 4. Report findings by severity with file references.
-
-Output:
-- Findings
-- Risks
-- Suggested fixes

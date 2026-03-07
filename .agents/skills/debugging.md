@@ -1,16 +1,9 @@
 # Skill: Debugging
 
-Goal: Identify root cause quickly and fix safely.
+Use this for incidents and failing tests.
 
-Steps:
-1. Reproduce the issue and capture evidence.
-2. Narrow the failing path to one module.
-3. Test one hypothesis at a time.
-4. Implement the smallest reliable fix.
-5. Validate with regression checks.
-
-Output:
-- Reproduction
-- Root cause
-- Fix
-- Verification
+1. Reproduce and capture exact failure evidence.
+2. Narrow failure to one component.
+3. Test one root-cause hypothesis at a time.
+4. Implement the smallest safe fix.
+5. Verify with regression checks.
