@@ -2,16 +2,16 @@
 
 ## Purpose
 
-Contains architecture and project documentation.
+`docs/` contains architecture and project documentation.
 
 ## Rules
 
-1. Keep documentation aligned with implementation.
-2. Explain intent before details.
-3. Update docs when behavior changes.
+1. Keep docs aligned with current behavior.
+2. Document intent, constraints, and tradeoffs.
+3. Update documentation with behavior changes.
 
 ## Common patterns
 
 - Short sections with clear headings
-- Linked references to source paths
-- Explicit assumptions and constraints
+- Links to related source paths
+- Explicit assumptions and limitations

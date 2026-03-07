@@ -2,16 +2,16 @@
 
 ## Purpose
 
-Contains automated tests.
+`tests/` contains automated verification for repository behavior.
 
 ## Rules
 
-1. New features must include tests.
-2. Tests must be deterministic.
-3. Avoid external network calls by default.
+1. New features and bug fixes require tests.
+2. Tests must be deterministic and isolated.
+3. Avoid external network dependencies unless explicitly mocked.
 
 ## Common patterns
 
-- Arrange-Act-Assert
+- Arrange-Act-Assert structure
+- Regression tests for fixed defects
 - Behavior-focused test names
-- Regression tests for bug fixes
