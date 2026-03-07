@@ -163,7 +163,7 @@ One of its most important use cases is migrating existing projects to a structur
 
 Use the migration workflow:
 
-- `.agents/workflows/migrate-to-anr.md`
+- `.agents/workflows/migrate-repository-to-anr.md`
 
 This workflow helps agents and maintainers:
 
