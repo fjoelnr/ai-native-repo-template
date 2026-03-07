@@ -62,3 +62,15 @@ Optional lokale Kontexte je Modul:
 
 - `src/auth/AGENT.md`
 - `src/database/AGENT.md`
+
+## ANR CLI
+
+Die minimale CLI kann ein ANR-Repository initialisieren und validieren.
+
+```bash
+node tools/anr-cli/index.js init
+node tools/anr-cli/index.js validate
+```
+
+`init` bootstrapt die ANR-Grundstruktur.
+`validate` prueft, ob die erforderlichen ANR-Dateien und Verzeichnisse vorhanden sind.
