@@ -1,6 +1,6 @@
 ---
 name: Agent Template Feedback
-about: Report issues with the AI-native repository template
+about: Report a problem or gap in this AI-native template
 labels: [agent-feedback]
 ---
 
@@ -11,10 +11,10 @@ Which agent reported this?
 Which workflow file was used?
 
 ## Context
-What task/context was the agent working in?
+Describe the task context and affected area.
 
 ## Problem description
-What failed, was unclear, or missing?
+What failed, was missing, or was unclear?
 
 ## Suggested improvement
-What change would improve this template?
+What specific change should be made?
