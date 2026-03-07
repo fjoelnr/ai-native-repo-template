@@ -2,33 +2,28 @@
 
 ## Purpose
 
-This repository is a minimal AI-native template for human and agent collaboration.
-It defines shared navigation, reusable workflows, and safety constraints.
+This repository is a reference template for AI-native engineering.
+It gives coding agents a global operating guide and directory-level context.
 
-## Repository Structure
+## Repository Map
 
-- `src/` -> application source code
-- `tests/` -> automated tests
-- `tools/` -> scripts and utilities
-- `docs/` -> project documentation
-- `.agents/` -> agent workflows, skills, and rules
+- `src/` application and domain code
+- `tests/` automated verification
+- `tools/` scripts and developer utilities
+- `docs/` architecture and project documentation
+- `.agents/` shared workflows, skills, and guardrails
+- `templates/` reusable scaffolding
 
-## Architecture Documentation
+## Rules
 
-- `docs/architecture.md`
+1. Read this file first, then `.agents/context-index.md`.
+2. Follow directory-level instructions in `*/AGENT.md` when working in that area.
+3. Escalate changes in forbidden zones for human review.
 
 ## Workflows
 
-- `.agents/workflows/feature-development.md`
-- `.agents/workflows/bugfix.md`
+- `.agents/workflows/`
 
 ## Skills
 
-- `.agents/skills/code-review.md`
-- `.agents/skills/debugging.md`
-- `.agents/skills/refactoring.md`
-
-## Guardrails
-
-- `.agents/guardrails/architecture-rules.md`
-- `.agents/guardrails/forbidden-zones.md`
+- `.agents/skills/`

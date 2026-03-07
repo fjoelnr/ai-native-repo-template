@@ -1,19 +1,15 @@
 # Repository Context Index
 
-Use this file as a quick navigation map before changing code.
+Use this map to find the right context before making changes.
 
-## Architecture Documentation
+## Core Project Areas
 
-- `docs/architecture.md`
-- `docs/README.md`
+- `src/` implementation code (`src/AGENT.md`)
+- `tests/` automated tests (`tests/AGENT.md`)
+- `tools/` scripts and utilities (`tools/AGENT.md`)
+- `docs/` documentation (`docs/AGENT.md`)
 
-## Project Areas
-
-- `src/` for implementation code
-- `tests/` for automated tests
-- `tools/` for utilities and helper scripts
-
-## Agent Guidance
+## Shared Agent Guidance
 
 - Workflows: `.agents/workflows/`
 - Skills: `.agents/skills/`
