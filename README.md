@@ -9,18 +9,18 @@ ANR makes them readable for agents.
 
 ANR is a repository standard for software development where humans and AI coding agents collaborate.
 
-## Transformation Diagram
+## From Traditional Repository to ANR
 
 ```text
-Traditional Repository                    AI Native Repository
-----------------------                    --------------------
-README.md only                            README.md + AGENTS.md
-implicit team knowledge                   explicit agent context
-ad-hoc agent prompting                    reusable skills/workflows
-unclear safety boundaries                 guardrails and constraints
+Traditional Repository                     AI Native Repository
+----------------------                     --------------------
+README.md as primary guide                 README.md + AGENTS.md
+implicit team knowledge                    explicit agent context
+ad-hoc prompts per task                    reusable skills/workflows
+unclear edit boundaries                    guardrails and constraints
 
                  Transform
-       "Migrate this repository to ANR"
+ "Migrate this repository to ANR"
 ```
 
 ANR introduces structured context for AI agents through:
@@ -137,29 +137,39 @@ It becomes an operating environment for AI agents:
 - safety constraints are versioned
 - collaboration quality improves over time
 
-## Architecture Diagram
+## ANR Architecture
 
 ```text
-                    AI Native Repository
-
-                        AGENTS.md
-                           |
-                    Global Context Layer
-                           |
-          +----------------+----------------+
-          |                |                |
-      src/AGENT.md    tests/AGENT.md   tools/AGENT.md
-          |                |                |
-          +----------------+----------------+
-                           |
-                   .agents/context-index
-                           |
-          +----------------+----------------+
-          |                |                |
-      .agents/skills   .agents/workflows  .agents/guardrails
-                           |
-                          docs/
+                           AI Coding Agents
+               (Codex, Cursor, Copilot, Claude)
+                                  |
+                         +--------v--------+
+                         |    AGENTS.md    |
+                         |  Global Context |
+                         +--------+--------+
+                                  |
+                         +--------v--------+
+                         |  context-index  |
+                         | Repository Map  |
+                         +--------+--------+
+                                  |
+         +------------------------+------------------------+
+         |                        |                        |
+   +-----v------+           +-----v------+           +-----v------+
+   | src/AGENT.md|          |tests/AGENT.md|         |tools/AGENT.md|
+   +-----+------+           +-----+------+           +-----+------+
+         |                        |                        |
+         +------------------------+------------------------+
+                                  |
+        +-------------------------+-------------------------+
+        |                         |                         |
+ +------v---------+      +--------v--------+      +--------v--------+
+ | .agents/skills |      |.agents/workflows|      |.agents/guardrails|
+ +----------------+      +-----------------+      +-----------------+
 ```
+
+ANR introduces structured repository context so AI coding agents can understand how to work safely and consistently.
+The model is agent-neutral and works with Codex, Cursor, Copilot, Claude, and other coding agents.
 
 ## Quickstart
 
