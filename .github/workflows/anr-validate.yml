@@ -11,6 +11,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Detect ANR compliance level
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          level=0
+
+          if [ -f "AGENTS.md" ] && [ -d ".agents" ]; then
+            level=1
+          fi
+
+          if [ "$level" -ge 1 ] && \
+             [ -f "src/AGENT.md" ] && \
+             [ -f "tests/AGENT.md" ] && \
+             [ -f "tools/AGENT.md" ] && \
+             [ -f "docs/AGENT.md" ]; then
+            level=2
+          fi
+
+          if [ "$level" -ge 2 ] && \
+             [ -d ".agents/skills" ] && \
+             [ -d ".agents/workflows" ] && \
+             [ -d ".agents/guardrails" ]; then
+            level=3
+          fi
+
+          echo "ANR Level detected: $level"
+
       - name: Validate required files
         shell: bash
         run: |
