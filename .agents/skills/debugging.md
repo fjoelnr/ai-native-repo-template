@@ -1,21 +1,16 @@
 # Skill: Debugging
 
-Use this skill when behavior diverges from expectations.
+Purpose: Find root cause quickly and fix with minimal risk.
 
-## Inputs
-- Error message or failing test
-- Reproduction steps
-- Relevant logs and stack traces
+Process:
+1. Reproduce the issue reliably.
+2. Narrow scope to the failing module.
+3. Validate one hypothesis at a time.
+4. Implement smallest safe fix.
+5. Add or update regression test.
 
-## Process
-1. Reproduce reliably and capture baseline output.
-2. Narrow the failure surface to one subsystem.
-3. Form and test one hypothesis at a time.
-4. Implement the smallest safe fix.
-5. Add regression coverage and verify no side effects.
-
-## Output
-- `Reproduction`
-- `Root cause`
-- `Fix`
-- `Regression test`
+Output:
+- Reproduction
+- Root cause
+- Fix
+- Verification
