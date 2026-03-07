@@ -1,41 +1,46 @@
 # AI-Native Repository Template
 
-An AI-native repository is designed for human developers and coding agents to collaborate in the same codebase with shared rules, workflows, and guardrails.
+This repository is a reusable starting point for teams that build software with humans and coding agents working together.
 
-## Why this template exists
+## What is an AI-native repository?
 
-- Keep agent behavior predictable across tools.
-- Make collaboration auditable through explicit workflows.
-- Reduce rework with shared skills and governance defaults.
+An AI-native repository treats AI agents as first-class contributors.
 
-## How agents interact with this repository
+It stores not only code, but also the operating context agents need:
+- workflows for common tasks
+- reusable skills for reasoning patterns
+- guardrails that define safe boundaries
+- governance files for traceable collaboration
 
-1. Start from `AGENTS.md` as the primary instruction contract.
-2. Pick a workflow from `.agents/workflows/` for the task shape.
-3. Apply one or more skills from `.agents/skills/`.
-4. Respect guardrails in `.agents/guardrails/` before writing code.
-5. Record decisions and assumptions in PR descriptions and docs.
+## Purpose of this template
 
-## Template structure
+This template provides a clean baseline for new projects so teams can:
+- onboard agents quickly
+- keep agent behavior consistent across tools
+- reduce risk with explicit constraints
+- scale collaboration without losing review quality
 
-- `.agents/`: agent operating model (skills, workflows, guardrails, registry)
-- `docs/`: project-specific documentation
-- `templates/`: reusable artifacts (specs, PR templates, ADRs)
-- `scripts/`: utility scripts for local and CI automation
-- `.github/`: issue templates and GitHub Actions workflows
+## Human-agent collaboration model
 
-## How to use this template
+1. Humans define goals, constraints, and acceptance criteria.
+2. Agents execute scoped tasks using `.agents/workflows` and `.agents/skills`.
+3. Agents follow `.agents/guardrails` and escalate when constraints are violated.
+4. Humans review, approve, and merge.
 
-1. Copy this repository as your project starting point.
-2. Update `AGENTS.md` with your domain rules and stack constraints.
-3. Customize skills/workflows for your team.
-4. Add CI checks in `.github/workflows/`.
-5. Enforce the guardrails during code review.
+The result is faster iteration with clear accountability.
 
-## Quick start
+## How to use this template for a new project
 
-```bash
-git clone <your-new-repo>
-cd <your-new-repo>
-# Read AGENTS.md before first agent-assisted change
-```
+1. Create a new repository from this template.
+2. Update `AGENTS.md` with your stack and domain-specific rules.
+3. Add architecture docs under `docs/`.
+4. Customize skills and workflows to match your engineering process.
+5. Configure CI and issue templates under `.github/`.
+
+## Template map
+
+- `.agents/` agent operating model
+- `docs/` architecture and project documentation
+- `scripts/` test, format, and maintenance scripts
+- `templates/` reusable project artifacts
+- `.github/` governance and automation

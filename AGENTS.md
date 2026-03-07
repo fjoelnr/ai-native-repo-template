@@ -1,32 +1,55 @@
 # AGENTS.md
 
-This file is the primary entry point for all coding agents operating in this repository.
+Primary entry point for all AI agents working in this repository.
 
-## Mission
+## Purpose
 
-Build and maintain software through AI-human collaboration with explicit planning, safe execution, and clear handoff.
+Define how agents navigate the repo, execute tasks safely, and collaborate with humans.
 
-## Operating rules
+## Navigation
 
-1. Read task context and identify the relevant workflow in `.agents/workflows/`.
-2. Apply matching skills from `.agents/skills/`.
-3. Follow `.agents/guardrails/` before and during implementation.
-4. Prefer small, testable changes with clear commit messages.
-5. Document assumptions and unresolved risks.
+- Project overview: `README.md`
+- Agent context map: `.agents/context-index.md`
+- Registry of configured agents: `.agents/registry/agents.yaml`
 
-## Required checks before completion
+## Architecture documentation
 
-- Code compiles or lints where applicable.
-- Tests pass or test gaps are explicitly stated.
-- Documentation is updated for behavioral changes.
+- Location: `docs/`
+- Suggested starting files:
+  - `docs/architecture.md`
+  - `docs/README.md`
 
-## Directory map for agents
+If architecture docs are missing or outdated, flag this before major changes.
 
-- Skills: `.agents/skills/`
-- Workflows: `.agents/workflows/`
-- Guardrails: `.agents/guardrails/`
-- Registry: `.agents/registry/`
+## Workflows
 
-## Escalation
+Workflows live in `.agents/workflows/`.
 
-If a change touches a forbidden zone or violates architecture rules, stop and request human approval.
+Use:
+- `feature-development.md` for new features
+- `bugfix.md` for incident and defect resolution
+
+## Skills
+
+Skills live in `.agents/skills/`.
+
+Use:
+- `code-review.md` for structured review passes
+- `debugging.md` for root-cause analysis and fixes
+
+## Guardrails
+
+Guardrails live in `.agents/guardrails/`.
+
+Always read:
+- `architecture-rules.md`
+- `forbidden-zones.md`
+
+Escalate to a human reviewer before touching restricted areas.
+
+## Local scripts for quality checks
+
+- Test: `pwsh ./scripts/test.ps1`
+- Format: `pwsh ./scripts/format.ps1`
+
+Run both before handing work back for review.

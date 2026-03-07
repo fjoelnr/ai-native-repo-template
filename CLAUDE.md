@@ -1,12 +1,7 @@
-# CLAUDE.md
+# Claude Agent Entry
 
-## Purpose
-
-Companion instructions for Claude-compatible agent runs in this repository.
-
-## Expected behavior
-
-- Start from `AGENTS.md`.
-- Prefer explicit plans for multi-step tasks.
-- Keep edits minimal and verifiable.
-- Surface risks early when requirements conflict with guardrails.
+Claude sessions should start with `AGENTS.md` and then follow:
+1. `.agents/context-index.md`
+2. relevant workflow in `.agents/workflows/`
+3. relevant skills in `.agents/skills/`
+4. required guardrails in `.agents/guardrails/`

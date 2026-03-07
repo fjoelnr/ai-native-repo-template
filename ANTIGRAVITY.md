@@ -1,12 +1,8 @@
-# ANTIGRAVITY.md
+# Antigravity Agent Entry
 
-## Purpose
+Antigravity runs are intended for experimental autonomous tasks.
 
-Cross-agent collaboration notes for experimental or autonomous coding runs.
-
-## Principles
-
-- Default to reversible changes.
-- Keep task scopes tight.
-- Leave a clear audit trail in commits and docs.
-- Escalate on ambiguity in requirements or policy.
+Rules:
+- limit scope and keep commits small
+- avoid forbidden zones without approval
+- document assumptions in commit messages or PR notes
