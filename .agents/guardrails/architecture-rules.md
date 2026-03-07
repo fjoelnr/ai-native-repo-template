@@ -1,6 +1,6 @@
 # Guardrail: Architecture Rules
 
-1. Keep business logic in `src/` and separate from infrastructure concerns.
-2. Maintain clear module boundaries and explicit interfaces.
-3. Require tests for behavior changes.
-4. Update docs for user-visible or architectural changes.
+1. Business logic belongs in `src/` modules with explicit boundaries.
+2. Production changes require corresponding tests in `tests/`.
+3. Cross-module contracts must be documented in `docs/`.
+4. Prefer incremental changes over broad refactors.

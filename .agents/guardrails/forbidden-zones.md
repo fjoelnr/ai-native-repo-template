@@ -1,12 +1,12 @@
 # Guardrail: Forbidden Zones
 
-Human review required before changes in:
+Human review required before changing:
 
 1. `.agents/guardrails/`
 2. `.agents/workflows/`
 3. `.github/ISSUE_TEMPLATE/`
 
-Agents must not automatically:
-- commit secrets or credentials
-- rewrite protected branch history
-- remove governance documentation
+Agents should not automatically modify:
+- repository policy files (`AGENTS.md`, `CODEOWNERS`)
+- git history of protected branches
+- files containing credentials or secrets

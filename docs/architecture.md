@@ -1,21 +1,23 @@
 # Architecture
 
-## What is an AI-native repository?
+## AI-native repository overview
 
-An AI-native repository is structured so coding agents and humans can collaborate reliably.
-It provides explicit context, repeatable workflows, and guardrails that reduce unsafe changes.
+An AI-native repository is structured for reliable collaboration between humans and coding agents.
+It combines global rules with local context so agents can make safe, scoped changes.
 
-## How agents interact with this repository
+## Hierarchical agent context model
 
-1. Read `AGENTS.md` for core rules and structure.
-2. Use `.agents/context-index.md` to navigate relevant files.
-3. Follow workflows in `.agents/workflows/`.
-4. Apply reusable skills in `.agents/skills/`.
-5. Respect constraints in `.agents/guardrails/` and request human review when required.
+1. `AGENTS.md` defines global goals, repository map, and rules.
+2. `.agents/context-index.md` points agents to relevant files and folders.
+3. Directory-level files (`src/AGENT.md`, `tests/AGENT.md`, `tools/AGENT.md`, `docs/AGENT.md`) provide local rules.
+4. Skills and workflows in `.agents/` define reusable operating procedures.
 
-## How to use this template for a new project
+Local `AGENT.md` files refine global instructions for their directory.
+When global and local guidance conflict, escalate to human review.
 
-1. Keep the directory structure (`src/`, `tests/`, `tools/`, `docs/`, `.agents/`).
-2. Replace placeholder files with project-specific implementation and tests.
-3. Adapt workflows, skills, and guardrails to your domain.
-4. Add module-level context files using `templates/module-agent.md`.
+## Using this template in a new project
+
+1. Keep the base structure (`src/`, `tests/`, `tools/`, `docs/`, `.agents/`).
+2. Add module-level `AGENT.md` files where localized context is needed.
+3. Customize skills, workflows, and guardrails to the domain.
+4. Keep docs and tests updated with every behavioral change.

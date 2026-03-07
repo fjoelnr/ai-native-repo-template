@@ -1,18 +1,18 @@
 # Module Agent Context Template
 
-Use this template for module-level context files (for example `src/auth/AGENT.md`).
+Use this structure for local agent guidance in modules (for example `src/auth/AGENT.md`).
 
-## Module purpose
-Describe what this module owns.
+## Purpose
+What this module owns and why it exists.
+
+## Boundaries
+What this module can and cannot depend on.
 
 ## Key files
-List the most important files and entry points.
+Primary entry points and important implementation files.
 
-## Dependencies
-List internal and external dependencies.
+## Change rules
+Safety constraints and review requirements for edits.
 
-## Constraints
-Document performance, security, or data constraints.
-
-## Change guidance for agents
-Provide safe change patterns and review expectations.
+## Test expectations
+What tests must be updated when behavior changes.
