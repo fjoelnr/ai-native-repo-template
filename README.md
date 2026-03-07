@@ -149,6 +149,13 @@ node tools/anr-cli/index.js validate
 - Related Work: [docs/related-work.md](docs/related-work.md)
 - Ecosystem Registry: [registry/README.md](registry/README.md)
 
+## Reference implementation
+
+This repository includes a minimal ANR reference implementation:
+
+- Example repository: [examples/basic-anr-project](examples/basic-anr-project)
+- Machine-readable manifest: [anr.yaml](anr.yaml)
+
 ## ANR Manifest
 
 `anr.yaml` is a machine-readable description of repository structure and ANR components.

@@ -47,3 +47,17 @@ In short:
 - `AGENTS.md` -> instruction file
 - `MCP` -> tool interface
 - `ANR` -> repository architecture for agent-native development
+
+## Comparison Table
+
+| Approach | Primary Scope | Strength | Limitation |
+|---|---|---|---|
+| AGENTS.md | Repository instruction file | Simple, open, widely adopted | Single-file guidance only |
+| Tool-specific rules (`CLAUDE.md`, `.cursorrules`) | Tool/editor-local behavior | Good local optimization | Not cross-tool architecture |
+| Model Context Protocol (MCP) | Tool interface layer | Standardized tool discovery/invocation | Does not define repository context architecture |
+| AI Native Repositories (ANR) | Repository architecture layer | Layered context + workflows + guardrails + manifest | Still evolving, requires adoption discipline |
+
+ANR builds on AGENTS.md and complements MCP:
+- AGENTS.md provides baseline repository guidance.
+- MCP provides the tool integration interface.
+- ANR structures the repository itself for agent-native operation.
