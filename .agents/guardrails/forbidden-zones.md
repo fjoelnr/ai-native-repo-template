@@ -6,7 +6,7 @@ Human review required before changing:
 2. `.agents/workflows/`
 3. `.github/ISSUE_TEMPLATE/`
 
-Agents must not automatically:
-- modify protected branch history
+Agents should not automatically:
+- modify branch history on protected branches
 - commit credentials or secrets
-- remove policy files without approval
+- remove policy and standards files

@@ -1,20 +1,20 @@
 # Repository Context Index
 
-Navigation map fuer AI agents.
+Use this file as the repository map for AI agents.
 
-## Core Areas
+## Main directories
 
-- `src/` (`src/AGENT.md`)
-- `tests/` (`tests/AGENT.md`)
-- `tools/` (`tools/AGENT.md`)
-- `docs/` (`docs/AGENT.md`)
+- `src/` source code (`src/AGENT.md`)
+- `tests/` automated tests (`tests/AGENT.md`)
+- `tools/` utilities (`tools/AGENT.md`)
+- `docs/` documentation (`docs/AGENT.md`)
 
-## Operational Context
+## Agent operating context
 
 - Workflows: `.agents/workflows/`
 - Skills: `.agents/skills/`
 - Guardrails: `.agents/guardrails/`
 
-## Templates
+## Template files
 
 - `templates/module-agent.md`

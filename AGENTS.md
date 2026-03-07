@@ -1,29 +1,29 @@
 # AGENTS.md
 
-## Purpose
+## Project purpose
 
-Root memory fuer AI agents in diesem Repository.
+This repository is the ANR v0.1 quickstart template for AI-native projects.
+It provides persistent context so coding agents and humans can collaborate predictably.
 
-## Repository Map
+## Repository map
 
 - `src/` application code
 - `tests/` automated tests
 - `tools/` scripts and utilities
-- `docs/` documentation
-- `.agents/` workflows, skills, guardrails
+- `docs/` project documentation
+- `.agents/` workflows, skills, and guardrails
+- `templates/` reusable context templates
 
-## Rules
+## Agent context hierarchy
 
-1. Kontext in dieser Reihenfolge laden: global -> directory -> workflow -> skill.
-2. Lokale Regeln in `*/AGENT.md` haben Vorrang fuer das jeweilige Verzeichnis.
-3. Guardrails sind verbindlich; bei Konflikten menschliches Review einholen.
+1. `AGENTS.md` (global context)
+2. nearest `*/AGENT.md` (directory context)
+3. `.agents/workflows/` (procedures)
+4. `.agents/skills/` (reasoning patterns)
+5. `.agents/guardrails/` (constraints)
 
-## Workflows
+## Locations
 
-- `.agents/workflows/`
-
-## Skills
-
-- `.agents/skills/`
-
-Hinweis: Zusätzliche Anweisungen existieren in directory-level `AGENT.md` Dateien.
+- Workflows: `.agents/workflows/`
+- Skills: `.agents/skills/`
+- Guardrails: `.agents/guardrails/`

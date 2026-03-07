@@ -1,6 +1,6 @@
 ---
 name: Agent Template Feedback
-about: Report problems or improvements for this ANR template
+about: Report a problem or improvement for this ANR quickstart template
 labels: [agent-feedback]
 ---
 
