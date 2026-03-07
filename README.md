@@ -2,6 +2,51 @@
 
 ANR is a repository standard for software development where humans and AI coding agents collaborate.
 
+## AI Native Repositories
+
+Repositories were built for humans.  
+ANR makes them readable for agents.
+
+Software development is entering a new phase.
+
+AI coding agents are no longer just assistants.  
+They explore repositories, run tests, and modify code.
+
+But most repositories were never designed for them.
+
+Agents are forced to guess:
+
+- where the architecture lives
+- which commands to run
+- what rules must never be broken
+
+AI Native Repositories (ANR) solve this.
+
+ANR introduces a simple structure that makes repositories understandable to AI agents:
+
+- `AGENTS.md` -> global context
+- directory `AGENT.md` -> local domain knowledge
+- `skills` -> reusable reasoning patterns
+- `workflows` -> development procedures
+- `guardrails` -> safety constraints
+
+Instead of prompting agents again and again, the repository itself contains the instructions.
+
+The repository becomes the interface between humans and AI agents.
+
+### The real breakthrough
+
+ANR does not only work for new repositories.  
+You can upgrade existing projects.
+
+Give an AI agent a single instruction:
+
+`Migrate this repository to ANR.`
+
+The agent analyzes the project, generates context files, defines workflows, and prepares the repository for AI-assisted development.
+
+ANR turns your existing codebase into an AI-native development environment.
+
 ## ANR Validation Status
 
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
