@@ -18,3 +18,12 @@ Use this file as the repository map for AI agents.
 ## Template files
 
 - `templates/module-agent.md`
+
+## Reading Order
+
+1. `AGENTS.md`
+2. `.agents/context-index.md`
+3. nearest local `AGENT.md`
+4. relevant workflow
+5. relevant skill
+6. guardrails
