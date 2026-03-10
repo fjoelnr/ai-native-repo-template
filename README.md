@@ -8,59 +8,43 @@ ANR makes them readable for agents.
 ![Migration Ready](https://img.shields.io/badge/Migration-Ready-orange)
 ![ANR Validation](https://img.shields.io/badge/ANR%20Validation-pending-lightgrey)
 
-ANR is an open, agent-neutral repository standard for software development where humans and AI coding agents collaborate.
-It builds on `AGENTS.md` and extends it into a full repository architecture for AI agents.
+Most people treat `AGENTS.md` like a prompt file.
 
-## Quick Explanation
+That is the mistake.
 
-- `README.md` explains a project to humans.
-- `AGENTS.md` explains it to AI agents.
-- `skills` provide reusable reasoning patterns.
-- `workflows` define development procedures.
-- `guardrails` define safety constraints.
+If you want an AI coding agent to feel like a senior engineer living inside your repository, the repository needs structure.
 
-ANR introduces a structured context layer so agents can understand and modify repositories without repeated ad-hoc prompting.
+ANR is that structure.
 
-## Relationship to AGENTS.md
+## The Core Idea
 
-- `AGENTS.md`: single instruction file for agent guidance.
-- `ANR`: full repository architecture including:
-  - skills
-  - workflows
-  - guardrails
-  - context index
-  - manifest (`anr.yaml`)
+An effective agent needs four things at all times:
+
+- the why -> what the system does
+- the map -> where things live
+- the rules -> what is allowed and what is not
+- the workflows -> how work gets done
+
+Prompting is temporary.  
+Structure is permanent.
+
+`README.md` explains a project to humans.  
+`AGENTS.md` explains it to AI.
+
+## The Anatomy of an AI Native Repository
+
+- `AGENTS.md` -> repo memory
+- `.agents/context-index.md` -> repository map
+- local `AGENT.md` files -> context near risky modules
+- `.agents/skills/` -> reusable expert modes
+- `.agents/workflows/` -> development procedures
+- `.agents/guardrails/` -> deterministic boundaries
+- `docs/` -> progressive source of truth
+- `anr.yaml` -> machine-readable repository manifest
 
 ANR builds on `AGENTS.md` and turns it into a full repository architecture for AI agents.
 
-## Relationship to MCP
-
-MCP standardizes how agents access external tools and services.
-ANR standardizes how repositories expose structured context to agents.
-
-```text
-AI Agent
-   |
-ANR (repository interface)
-   |
-MCP (tool interface)
-   |
-tools and services
-```
-
-ANR and MCP are complementary layers in an agent-native development stack.
-
-## ANR Architecture
-
-Architecture layers:
-
-- `AGENTS.md` -> global context
-- `.agents/context-index.md` -> repository map
-- directory-level `AGENT.md` files -> local context
-- `.agents/skills/` -> reusable reasoning
-- `.agents/workflows/` -> development procedures
-- `.agents/guardrails/` -> safety constraints
-- `anr.yaml` -> machine-readable repository metadata
+## ANR Reference Architecture
 
 ```text
                            AI Coding Agents
@@ -68,7 +52,7 @@ Architecture layers:
                                   |
                          +--------v--------+
                          |    AGENTS.md    |
-                         |  Global Context |
+                         |  Repo Memory    |
                          +--------+--------+
                                   |
                          +--------v--------+
@@ -110,26 +94,34 @@ unclear edit boundaries                          versioned guardrails
      "Migrate this repository to ANR"
 ```
 
-## Migration Capability
+## Why This Matters
 
-ANR is not only for greenfield projects.
-Existing repositories can be upgraded using the migration workflow:
+When a repository is organized this way, an agent stops behaving like a chatbot and starts behaving more like a project-native engineer.
+
+The important change is not the model.
+It is the repository becoming an operating environment for the model.
+
+## Existing Repositories, Not Just New Ones
+
+Most production repositories already exist.
+ANR is designed for migration, not just greenfield setup.
+
+Migration workflow:
 
 - [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
 
-This workflow guides agents to inspect existing structure, generate context files, define workflows and guardrails, and validate ANR compliance.
-
-Example prompt:
+Typical prompt:
 
 `Convert this repository to ANR.`
 
 Expected migration sequence:
 
-1. analyze repository structure
+1. inspect the current structure
 2. generate `AGENTS.md`
-3. create directory context files (`*/AGENT.md`)
-4. define workflows and guardrails
-5. validate ANR compliance
+3. create `.agents/context-index.md`
+4. add local `AGENT.md` files near sharp edges
+5. define workflows and guardrails
+6. validate ANR compliance
 
 ## Quickstart
 
@@ -140,6 +132,8 @@ node tools/anr-cli/index.js init
 node tools/anr-cli/index.js validate
 ```
 
+Then start implementing your domain in `src/` and add local context where the risk is highest.
+
 ## Key Links
 
 - ANR Spec: [AI_NATIVE_REPO_SPEC.md](AI_NATIVE_REPO_SPEC.md)
@@ -147,24 +141,35 @@ node tools/anr-cli/index.js validate
 - Migration Workflow: [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
 - ANR Manifest: [anr.yaml](anr.yaml)
 - Related Work: [docs/related-work.md](docs/related-work.md)
+- Positioning: [docs/anr-positioning.md](docs/anr-positioning.md)
+- Research: [docs/research.md](docs/research.md)
 - Ecosystem Registry: [registry/README.md](registry/README.md)
 
-## Reference implementation
+## Reference Implementation
 
 This repository includes a minimal ANR reference implementation:
 
 - Example repository: [examples/basic-anr-project](examples/basic-anr-project)
 - Machine-readable manifest: [anr.yaml](anr.yaml)
 
-## ANR Manifest
+## Relationship to AGENTS.md
 
-`anr.yaml` is a machine-readable description of repository structure and ANR components.
-It allows coding agents and tools to discover context entry points automatically.
+- `AGENTS.md` -> single instruction file
+- `ANR` -> full repository architecture
 
-## Philosophy
+## Relationship to MCP
 
-ANR is designed to be:
+- `ANR` -> repository interface
+- `MCP` -> tool interface
 
-- **Agent-neutral** (works with Codex, Cursor, Copilot, Claude, and others)
-- **Simple** (plain files over complex frameworks)
-- **Open** (versioned, inspectable, and adaptable)
+Together:
+
+```text
+AI Agent
+   |
+ANR (repository interface)
+   |
+MCP (tool interface)
+   |
+tools and services
+```
