@@ -16,6 +16,17 @@ If you want an AI coding agent to feel like a senior engineer living inside your
 
 ANR is that structure.
 
+## What This Repository Is For
+
+Use this template when you want a new repository to be:
+
+- readable for both humans and coding agents
+- migration-ready for ANR from day one
+- opinionated enough to give agents guardrails without hardcoding your product domain
+
+This repository is not a finished product scaffold for a specific stack.
+It is a reference template for repository structure, context layering, and AI-native operating conventions.
+
 ## The Core Idea
 
 An effective agent needs four things at all times:
@@ -134,6 +145,24 @@ node tools/anr-cli/index.js validate
 
 Then start implementing your domain in `src/` and add local context where the risk is highest.
 
+## Template Adoption Checklist
+
+After creating a new repository from this template:
+
+1. replace the project name, description, and badges in `README.md`
+2. update `AGENTS.md` with the real repository purpose and map
+3. keep or remove example material under `examples/` depending on whether it helps the target repo
+4. add stack-specific workflows, guardrails, and local `AGENT.md` files where complexity actually exists
+5. set `CODEOWNERS`, repository topics, and CI to match the real project
+6. validate the resulting structure before writing feature code
+
+## Current Status
+
+- ANR reference template: active
+- intended use: greenfield repositories and migration experiments
+- validation workflow: `.github/workflows/anr-validate.yml`
+- current default branch flow: `feature -> develop -> main`
+
 ## Key Links
 
 - ANR Spec: [AI_NATIVE_REPO_SPEC.md](AI_NATIVE_REPO_SPEC.md)
@@ -142,6 +171,7 @@ Then start implementing your domain in `src/` and add local context where the ri
 - ANR Manifest: [anr.yaml](anr.yaml)
 - Related Work: [docs/related-work.md](docs/related-work.md)
 - Positioning: [docs/anr-positioning.md](docs/anr-positioning.md)
+- Status: [docs/STATUS.md](docs/STATUS.md)
 - Research: [docs/research.md](docs/research.md)
 - Ecosystem Registry: [registry/README.md](registry/README.md)
 
