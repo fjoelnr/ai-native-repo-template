@@ -1,0 +1,20 @@
+profile_id: mcp-infra
+category: infrastructure
+focus:
+  - mcp
+  - routing
+  - templates
+  - deterministic-deployments
+recommended_docs:
+  - docs/operations.md
+  - docs/runtime-boundaries.md
+  - docs/verification.md
+  - docs/contracts.md
+recommended_skills:
+  - infrastructure-review
+  - deployment-safety
+  - contract-validation
+recommended_guardrails:
+  - no-hidden-node-identity
+  - idempotent-deployments
+  - local-vs-remote-test-boundaries
