@@ -13,6 +13,7 @@ It demonstrates how a repository becomes readable to AI coding agents through pe
 - `docs/` project documentation
 - `.agents/` workflows, skills, and guardrails
 - `templates/` reusable context templates
+- `profiles/` stack-specific overlays and AGENTS fragments
 
 ## Context hierarchy
 
@@ -27,9 +28,11 @@ It demonstrates how a repository becomes readable to AI coding agents through pe
 - Keep this file short. It is repo memory, not a knowledge dump.
 - Put detailed truth in local `AGENT.md` files and `docs/`.
 - Keep workflows reusable and guardrails explicit.
+- Use stack profiles to add domain context without coupling the repo to one AI vendor.
 
 ## Locations
 
 - Workflows: `.agents/workflows/`
 - Skills: `.agents/skills/`
 - Guardrails: `.agents/guardrails/`
+- Profiles: `profiles/`
