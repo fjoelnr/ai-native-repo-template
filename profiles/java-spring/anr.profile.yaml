@@ -1,0 +1,20 @@
+profile_id: java-spring
+category: application
+focus:
+  - spring-boot
+  - api-contracts
+  - persistence
+  - testing
+recommended_docs:
+  - docs/architecture.md
+  - docs/api.md
+  - docs/testing.md
+  - docs/operations.md
+recommended_skills:
+  - spring-boot-engineering
+  - java-code-review
+  - api-contract-review
+recommended_guardrails:
+  - transaction-boundaries
+  - migration-discipline
+  - test-slice-rules

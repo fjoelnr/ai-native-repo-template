@@ -23,6 +23,7 @@ Use this template when you want a new repository to be:
 - readable for both humans and coding agents
 - migration-ready for ANR from day one
 - opinionated enough to give agents guardrails without hardcoding your product domain
+- extensible through stack profiles instead of vendor-specific prompt packs
 
 This repository is not a finished product scaffold for a specific stack.
 It is a reference template for repository structure, context layering, and AI-native operating conventions.
@@ -51,6 +52,7 @@ Structure is permanent.
 - `.agents/workflows/` -> development procedures
 - `.agents/guardrails/` -> deterministic boundaries
 - `docs/` -> progressive source of truth
+- `profiles/` -> stack-specific overlays for common repository families
 - `anr.yaml` -> machine-readable repository manifest
 
 ANR builds on `AGENTS.md` and turns it into a full repository architecture for AI agents.
@@ -143,7 +145,7 @@ node tools/anr-cli/index.js init
 node tools/anr-cli/index.js validate
 ```
 
-Then start implementing your domain in `src/` and add local context where the risk is highest.
+Then choose a stack profile from `profiles/`, merge the relevant guidance into `AGENTS.md`, and start implementing your domain in `src/`.
 
 ## Template Adoption Checklist
 
@@ -152,9 +154,10 @@ After creating a new repository from this template:
 1. replace the project name, description, and badges in `README.md`
 2. update `AGENTS.md` with the real repository purpose and map
 3. keep or remove example material under `examples/` depending on whether it helps the target repo
-4. add stack-specific workflows, guardrails, and local `AGENT.md` files where complexity actually exists
-5. set `CODEOWNERS`, repository topics, and CI to match the real project
-6. validate the resulting structure before writing feature code
+4. choose the closest stack profile from `profiles/` and merge only the relevant guidance
+5. add stack-specific workflows, guardrails, and local `AGENT.md` files where complexity actually exists
+6. set `CODEOWNERS`, repository topics, and CI to match the real project
+7. validate the resulting structure before writing feature code
 
 ## Current Status
 
@@ -168,6 +171,8 @@ After creating a new repository from this template:
 - ANR Spec: [AI_NATIVE_REPO_SPEC.md](AI_NATIVE_REPO_SPEC.md)
 - Example Project: [examples/basic-anr-project](examples/basic-anr-project)
 - Migration Workflow: [.agents/workflows/migrate-repository-to-anr.md](.agents/workflows/migrate-repository-to-anr.md)
+- Stack Profiles: [docs/stack-profiles.md](docs/stack-profiles.md)
+- Profiles Directory: [profiles/README.md](profiles/README.md)
 - ANR Manifest: [anr.yaml](anr.yaml)
 - Related Work: [docs/related-work.md](docs/related-work.md)
 - Positioning: [docs/anr-positioning.md](docs/anr-positioning.md)

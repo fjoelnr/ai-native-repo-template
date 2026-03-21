@@ -1,0 +1,35 @@
+# Stack Profiles
+
+## Purpose
+
+The ANR base template is intentionally neutral. Most real repositories still need stack-aware context.
+
+Stack profiles solve that without coupling ANR to a single tool vendor or framework family.
+
+## Design Rule
+
+- `AGENTS.md` remains the neutral top-level memory file
+- `.agents/` remains the reusable operating layer
+- profiles add domain-specific context, not product-specific assumptions
+- no profile should depend on a single AI tool such as Claude, Codex, or Cursor
+
+## Current Profiles
+
+- [Java Spring](../profiles/java-spring/README.md)
+- [PlatformIO IoT](../profiles/platformio-iot/README.md)
+- [MCP Infrastructure](../profiles/mcp-infra/README.md)
+
+## How To Apply A Profile
+
+1. start from the base ANR template
+2. choose the closest profile in [`profiles/`](../profiles/README.md)
+3. merge the profile's `AGENTS.fragment.md` into the repo-level `AGENTS.md`
+4. add the recommended docs, skills, workflows, and guardrails
+5. remove anything that does not match the real repository
+
+## Why Profiles Matter
+
+A generic ANR repository can tell an agent where things belong.
+A stack profile tells the agent what kinds of mistakes are likely in this domain.
+
+That is the difference between a readable repository and a repo that is actually useful for high-quality AI-assisted work.
