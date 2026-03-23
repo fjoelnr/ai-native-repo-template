@@ -1,0 +1,24 @@
+[
+  {
+    "id": "parallel-specialists",
+    "message": "prepare the MVP launch",
+    "expectedAuthors": ["ResearchAgent", "ExecutionAgent", "RiskAgent"],
+    "expectedTexts": [
+      "research complete",
+      "execution complete",
+      "risk review complete"
+    ],
+    "expectedEventCount": 3
+  },
+  {
+    "id": "parallel-empty-message-still-uses-all-specialists",
+    "message": "",
+    "expectedAuthors": ["ResearchAgent", "ExecutionAgent", "RiskAgent"],
+    "expectedTexts": [
+      "research complete",
+      "execution complete",
+      "risk review complete"
+    ],
+    "expectedEventCount": 3
+  }
+]

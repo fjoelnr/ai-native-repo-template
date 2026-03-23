@@ -1,3 +1,52 @@
+---
+anr:
+  kind: workflow
+  version: 0.2
+workflow:
+  id: select-stack-profile
+  title: Select Stack Profile
+  intent: Choose the narrowest matching profile after ANR initialization and merge only relevant guidance.
+  category: configuration
+  triggers:
+    - repository bootstrap
+    - profile selection
+    - stack alignment
+  inputs:
+    required:
+      - repository_type
+      - technology_stack
+    optional:
+      - deployment_model
+  outputs:
+    - selected_profile
+    - merged_guidance
+    - removed_irrelevant_defaults
+  steps:
+    - id: classify
+      title: Classify the repository type
+    - id: select
+      title: Pick the closest profile
+    - id: merge
+      title: Merge relevant AGENTS guidance
+    - id: expand
+      title: Add recommended profile docs
+    - id: trim
+      title: Remove irrelevant copied guidance
+  quality_gates:
+    - closest_profile_selected
+    - irrelevant_guidance_removed
+  approvals:
+    required: false
+  failure_modes:
+    - profile_too_broad
+    - copied_guidance_left_unedited
+    - stack_specific_docs_missing
+  success_criteria:
+    - profile_matches_actual_repo
+    - AGENTS_guidance_is_relevant
+    - unnecessary_structure_not_imported
+---
+
 # Select Stack Profile
 
 ## Goal

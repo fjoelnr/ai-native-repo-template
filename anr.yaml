@@ -1,4 +1,4 @@
-anr_version: 0.1
+anr_version: 0.2
 
 repository:
   name: ai-native-repo-template
@@ -22,3 +22,39 @@ agent_components:
 capabilities:
   migration_supported: true
   validation_supported: true
+  workflow_metadata: true
+  skill_metadata: true
+  memory_contract: false
+  runtime_contract: true
+  evals_contract: false
+
+runtime:
+  mcp_servers: []
+  local_tools:
+    - id: anr-cli
+      entrypoint: node tools/anr-cli/index.js
+      purpose: initialize and validate repository structure
+  privileged_operations: []
+
+memory:
+  enabled: false
+  paths:
+    summaries: .memory/summaries
+    decisions: .memory/decisions
+    working_state: .memory/working
+  policy:
+    source_of_truth: versioned_files
+    retention: local_policy
+
+evals:
+  enabled: false
+  paths:
+    tasks: evals/tasks
+    fixtures: evals/fixtures
+    reports: evals/reports
+  quality_gates: []
+
+registry:
+  profile: base
+  skill_packs: []
+  workflow_packs: []

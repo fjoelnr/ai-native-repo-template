@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sequential-specialists",
+    "message": "launch a narrow MVP",
+    "expectedAuthors": ["SpecAgent", "ExecutionAgent", "ReviewAgent"],
+    "expectedTexts": ["spec complete", "execution complete", "review complete"],
+    "expectedEventCount": 3
+  },
+  {
+    "id": "sequential-empty-message-still-bounded",
+    "message": "",
+    "expectedAuthors": ["SpecAgent", "ExecutionAgent", "ReviewAgent"],
+    "expectedTexts": ["spec complete", "execution complete", "review complete"],
+    "expectedEventCount": 3
+  }
+]

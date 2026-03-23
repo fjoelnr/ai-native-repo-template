@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+tests/evaluations/reports/*.json
+tests/evaluations/reports/*.md

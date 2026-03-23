@@ -11,6 +11,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Detect ANR compliance level
         shell: bash
         run: |
@@ -112,6 +117,9 @@ jobs:
           if [ "$missing" -ne 0 ]; then
             exit 1
           fi
+
+      - name: Validate ANR metadata
+        run: node tools/anr-cli/index.js validate
 
       - name: Validation summary
         run: echo "ANR validation passed"

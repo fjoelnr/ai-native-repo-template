@@ -175,6 +175,9 @@ After creating a new repository from this template:
 - Profiles Directory: [profiles/README.md](profiles/README.md)
 - ANR Manifest: [anr.yaml](anr.yaml)
 - Related Work: [docs/related-work.md](docs/related-work.md)
+- ANR Evolution: [docs/anr-evolution.md](docs/anr-evolution.md)
+- ANR v0.2 Proposal: [docs/anr-v0.2-spec.md](docs/anr-v0.2-spec.md)
+- Agentic Patterns Mapping: [docs/agentic-patterns-mapping.md](docs/agentic-patterns-mapping.md)
 - Positioning: [docs/anr-positioning.md](docs/anr-positioning.md)
 - Status: [docs/STATUS.md](docs/STATUS.md)
 - Research: [docs/research.md](docs/research.md)
@@ -185,6 +188,7 @@ After creating a new repository from this template:
 This repository includes a minimal ANR reference implementation:
 
 - Example repository: [examples/basic-anr-project](examples/basic-anr-project)
+- Pattern lab seed: [examples/agentic-patterns-lab](examples/agentic-patterns-lab)
 - Machine-readable manifest: [anr.yaml](anr.yaml)
 
 ## Relationship to AGENTS.md

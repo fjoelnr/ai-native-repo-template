@@ -36,5 +36,13 @@ Possible next steps:
 - publish formal ANR specification updates
 - share migration benchmarks
 - align ANR repository interface with MCP-based tool ecosystems
+- define ANR runtime, memory, and evaluation extensions beyond the current file layout
+- package reusable skills and workflows through a registry model
 
 ANR is positioned as an open, iterative research track for practical agent-native software development.
+
+See also:
+
+- [ANR Evolution](anr-evolution.md)
+- [ANR v0.2 Specification Proposal](anr-v0.2-spec.md)
+- [Agentic Patterns Mapping](agentic-patterns-mapping.md)

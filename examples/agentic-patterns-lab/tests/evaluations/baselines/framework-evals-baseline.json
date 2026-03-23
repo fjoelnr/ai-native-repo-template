@@ -1,0 +1,250 @@
+{
+  "totalTracks": 5,
+  "totalCases": 14,
+  "totalPassed": 14,
+  "totalFailed": 0,
+  "passRate": 1,
+  "skippedTracks": [],
+  "tracks": [
+    {
+      "name": "langgraph-real-routing",
+      "skipped": false,
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "passRate": 1,
+      "cases": [
+        {
+          "id": "order-status-route",
+          "passed": true,
+          "expected": {
+            "output": "Fetch order status flow",
+            "route": "order-status",
+            "visited": [
+              "classifier",
+              "order-status-node"
+            ]
+          }
+        },
+        {
+          "id": "product-info-route",
+          "passed": true,
+          "expected": {
+            "output": "Search product information flow",
+            "route": "product-info",
+            "visited": [
+              "classifier",
+              "product-info-node"
+            ]
+          }
+        },
+        {
+          "id": "support-route",
+          "passed": true,
+          "expected": {
+            "output": "Run support troubleshooting flow",
+            "route": "technical-support",
+            "visited": [
+              "classifier",
+              "technical-support-node"
+            ]
+          }
+        },
+        {
+          "id": "clarification-fallback-route",
+          "passed": true,
+          "expected": {
+            "output": "Ask clarifying question",
+            "route": "clarification",
+            "visited": [
+              "classifier",
+              "clarification-node"
+            ]
+          }
+        },
+        {
+          "id": "empty-input-fallback-route",
+          "passed": true,
+          "expected": {
+            "output": "Ask clarifying question",
+            "route": "clarification",
+            "visited": [
+              "classifier",
+              "clarification-node"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "adk-real-sequential",
+      "skipped": false,
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "passRate": 1,
+      "cases": [
+        {
+          "id": "sequential-specialists",
+          "passed": true,
+          "expected": {
+            "authors": [
+              "SpecAgent",
+              "ExecutionAgent",
+              "ReviewAgent"
+            ],
+            "eventCount": 3,
+            "texts": [
+              "spec complete",
+              "execution complete",
+              "review complete"
+            ]
+          }
+        },
+        {
+          "id": "sequential-empty-message-still-bounded",
+          "passed": true,
+          "expected": {
+            "authors": [
+              "SpecAgent",
+              "ExecutionAgent",
+              "ReviewAgent"
+            ],
+            "eventCount": 3,
+            "texts": [
+              "spec complete",
+              "execution complete",
+              "review complete"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "adk-real-parallel",
+      "skipped": false,
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "passRate": 1,
+      "cases": [
+        {
+          "id": "parallel-specialists",
+          "passed": true,
+          "expected": {
+            "authors": [
+              "ExecutionAgent",
+              "ResearchAgent",
+              "RiskAgent"
+            ],
+            "eventCount": 3,
+            "texts": [
+              "execution complete",
+              "research complete",
+              "risk review complete"
+            ]
+          }
+        },
+        {
+          "id": "parallel-empty-message-still-uses-all-specialists",
+          "passed": true,
+          "expected": {
+            "authors": [
+              "ExecutionAgent",
+              "ResearchAgent",
+              "RiskAgent"
+            ],
+            "eventCount": 3,
+            "texts": [
+              "execution complete",
+              "research complete",
+              "risk review complete"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "adk-real-session-state",
+      "skipped": false,
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "passRate": 1,
+      "cases": [
+        {
+          "id": "session-state-persistence",
+          "passed": true,
+          "expected": {
+            "disallowedSessionState": {
+              "shared:stage": "brief"
+            },
+            "eventCount": 2,
+            "sessionState": {
+              "app:goal": "launch-mvp",
+              "app:risk_level": "medium",
+              "shared:stage": "review",
+              "user:approval_required": "true"
+            }
+          }
+        },
+        {
+          "id": "session-state-empty-message-still-persists-final-review-state",
+          "passed": true,
+          "expected": {
+            "disallowedSessionState": {
+              "shared:stage": "brief"
+            },
+            "eventCount": 2,
+            "sessionState": {
+              "app:goal": "launch-mvp",
+              "app:risk_level": "medium",
+              "shared:stage": "review",
+              "user:approval_required": "true"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "adk-real-hitl",
+      "skipped": false,
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "passRate": 1,
+      "cases": [
+        {
+          "id": "pending-confirmation-request",
+          "passed": true,
+          "expected": {
+            "disallowedStateKey": "shared:publish_status",
+            "expectedConfirmationKey": "publish-release-call",
+            "expectedError": "This tool call requires confirmation, please approve or reject."
+          }
+        },
+        {
+          "id": "rejected-confirmation-path",
+          "passed": true,
+          "expected": {
+            "disallowedStateKey": "shared:publish_status",
+            "expectedError": "This tool call is rejected.",
+            "sessionState": {}
+          }
+        },
+        {
+          "id": "approved-confirmation-path",
+          "passed": true,
+          "expected": {
+            "expectedChannel": "beta",
+            "expectedNoPendingConfirmation": true,
+            "expectedState": {
+              "shared:publish_status": "shipped:beta"
+            },
+            "expectedStatus": "published"
+          }
+        }
+      ]
+    }
+  ]
+}

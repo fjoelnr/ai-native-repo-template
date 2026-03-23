@@ -9,6 +9,7 @@ Current profiles:
 - `java-spring`: service/application repositories built around Java, Spring Boot, testing, persistence, and API contracts
 - `platformio-iot`: embedded firmware repositories using PlatformIO, device configuration, hardware validation, and deployment guardrails
 - `mcp-infra`: repositories that render, deploy, validate, and operate MCP-facing infrastructure and routing
+- `startup-os`: solo-builder and small-team operating overlay for fast product, growth, launch, and experiment work
 
 How to use a profile:
 

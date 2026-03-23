@@ -42,6 +42,16 @@ ANR builds on `AGENTS.md` and extends it into a repository architecture with:
 - guardrails
 - manifest (`anr.yaml`)
 
+Recent ecosystem work also points beyond static repository structure into adjacent areas:
+
+- agent libraries and skill packs
+- multi-agent orchestration
+- persistent memory and recall
+- tool fabrics built around MCP
+- retrieval-backed project context
+
+These patterns do not replace ANR's core position, but they do inform the next likely ANR extensions.
+
 In short:
 
 - `AGENTS.md` -> instruction file
@@ -61,3 +71,7 @@ ANR builds on AGENTS.md and complements MCP:
 - AGENTS.md provides baseline repository guidance.
 - MCP provides the tool integration interface.
 - ANR structures the repository itself for agent-native operation.
+
+See also:
+
+- [ANR Evolution](anr-evolution.md)
