@@ -17,6 +17,12 @@ Negative and edge coverage includes:
 - disallowed intermediate state values in session-state checks
 - explicit no-state-change assertions for pending and rejected HITL paths
 
+Runtime behavior:
+
+- `routing/langgraph-real` is treated as a required local track
+- the real ADK tracks are treated as optional runtime-backed tracks until `requirements-adk.txt` is installed into `.venv`
+- optional skipped tracks stay visible in the JSON and Markdown scorecards without failing the whole lab on fresh clones
+
 Files:
 
 - `tests/evaluations/framework-evals.js` runs the eval suite and prints a JSON summary

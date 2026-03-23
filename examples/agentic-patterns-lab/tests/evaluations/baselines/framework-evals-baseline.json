@@ -9,6 +9,8 @@
     {
       "name": "langgraph-real-routing",
       "skipped": false,
+      "required": true,
+      "runtime": "node",
       "total": 5,
       "passed": 5,
       "failed": 0,
@@ -79,6 +81,8 @@
     {
       "name": "adk-real-sequential",
       "skipped": false,
+      "required": false,
+      "runtime": "python-adk-venv",
       "total": 2,
       "passed": 2,
       "failed": 0,
@@ -123,6 +127,8 @@
     {
       "name": "adk-real-parallel",
       "skipped": false,
+      "required": false,
+      "runtime": "python-adk-venv",
       "total": 2,
       "passed": 2,
       "failed": 0,
@@ -167,6 +173,8 @@
     {
       "name": "adk-real-session-state",
       "skipped": false,
+      "required": false,
+      "runtime": "python-adk-venv",
       "total": 2,
       "passed": 2,
       "failed": 0,
@@ -209,6 +217,8 @@
     {
       "name": "adk-real-hitl",
       "skipped": false,
+      "required": false,
+      "runtime": "python-adk-venv",
       "total": 3,
       "passed": 3,
       "failed": 0,

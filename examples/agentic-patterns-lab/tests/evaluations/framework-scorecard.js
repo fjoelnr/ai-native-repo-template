@@ -46,6 +46,8 @@ function createBaselineFromSummary(summary) {
     tracks: summary.tracks.map((track) => ({
       name: track.name,
       skipped: track.skipped,
+      required: track.required,
+      runtime: track.runtime,
       total: track.total,
       passed: track.passed,
       failed: track.failed,
@@ -111,54 +113,57 @@ function compareToBaseline(summary, baseline) {
     const totalDelta = now.total - before.total
     const failedDelta = now.failed - before.failed
     const skippedChanged = now.skipped !== before.skipped
+    const required = now.required ?? before.required ?? true
 
     const caseDiffs = []
-    const currentCases = indexCases([now])
-    const baselineCases = indexCases([before])
-    const allCaseKeys = new Set([...currentCases.keys(), ...baselineCases.keys()])
+    if (!(now.skipped && !required)) {
+      const currentCases = indexCases([now])
+      const baselineCases = indexCases([before])
+      const allCaseKeys = new Set([...currentCases.keys(), ...baselineCases.keys()])
 
-    for (const caseKey of [...allCaseKeys].sort()) {
-      const currentCase = currentCases.get(caseKey)
-      const baselineCase = baselineCases.get(caseKey)
+      for (const caseKey of [...allCaseKeys].sort()) {
+        const currentCase = currentCases.get(caseKey)
+        const baselineCase = baselineCases.get(caseKey)
 
-      if (!baselineCase) {
-        caseDiffs.push({
-          id: caseKey.split(":").slice(1).join(":"),
-          status: "added",
-        })
-        continue
-      }
+        if (!baselineCase) {
+          caseDiffs.push({
+            id: caseKey.split(":").slice(1).join(":"),
+            status: "added",
+          })
+          continue
+        }
 
-      if (!currentCase) {
-        caseDiffs.push({
-          id: caseKey.split(":").slice(1).join(":"),
-          status: "removed",
-        })
-        regressions.push(`case removed: ${caseKey}`)
-        continue
-      }
+        if (!currentCase) {
+          caseDiffs.push({
+            id: caseKey.split(":").slice(1).join(":"),
+            status: "removed",
+          })
+          regressions.push(`case removed: ${caseKey}`)
+          continue
+        }
 
-      if (baselineCase.passed && !currentCase.passed) {
+        if (baselineCase.passed && !currentCase.passed) {
+          caseDiffs.push({
+            id: currentCase.id,
+            status: "regressed",
+          })
+          regressions.push(`case regressed: ${caseKey}`)
+          continue
+        }
+
+        if (!baselineCase.passed && currentCase.passed) {
+          caseDiffs.push({
+            id: currentCase.id,
+            status: "improved",
+          })
+          continue
+        }
+
         caseDiffs.push({
           id: currentCase.id,
-          status: "regressed",
+          status: "unchanged",
         })
-        regressions.push(`case regressed: ${caseKey}`)
-        continue
       }
-
-      if (!baselineCase.passed && currentCase.passed) {
-        caseDiffs.push({
-          id: currentCase.id,
-          status: "improved",
-        })
-        continue
-      }
-
-      caseDiffs.push({
-        id: currentCase.id,
-        status: "unchanged",
-      })
     }
 
     if (failedDelta > 0) {
@@ -169,19 +174,21 @@ function compareToBaseline(summary, baseline) {
       regressions.push(`pass rate dropped: ${trackName}`)
     }
 
-    if (skippedChanged && now.skipped) {
+    if (skippedChanged && now.skipped && required) {
       regressions.push(`track became skipped: ${trackName}`)
     }
 
     trackDiffs.push({
       name: trackName,
-      status: "existing",
+      status: now.skipped && !required ? "optional-skipped" : "existing",
       baseline: {
         total: before.total,
         passed: before.passed,
         failed: before.failed,
         passRate: before.passRate,
         skipped: before.skipped,
+        required: before.required ?? true,
+        runtime: before.runtime ?? "local",
       },
       current: {
         total: now.total,
@@ -189,6 +196,9 @@ function compareToBaseline(summary, baseline) {
         failed: now.failed,
         passRate: now.passRate,
         skipped: now.skipped,
+        required,
+        runtime: now.runtime ?? before.runtime ?? "local",
+        skipReason: now.skipReason ?? null,
       },
       delta: {
         total: totalDelta,
@@ -305,6 +315,14 @@ function renderScorecardMarkdown(scorecard) {
 
     if (track.status === "removed") {
       lines.push("- status: removed")
+      lines.push("")
+      continue
+    }
+
+    if (track.status === "optional-skipped") {
+      lines.push("- status: optional runtime skipped")
+      lines.push(`- runtime: ${track.current.runtime}`)
+      lines.push(`- reason: ${track.current.skipReason || "not provided"}`)
       lines.push("")
       continue
     }

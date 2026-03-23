@@ -11,6 +11,10 @@ function getVenvPython() {
     : path.join(rootDir, ".venv", "bin", "python")
 }
 
+function hasAdkRuntime() {
+  return fs.existsSync(getVenvPython())
+}
+
 function loadJsonFixture(name) {
   return JSON.parse(fs.readFileSync(path.join(fixturesDir, name), "utf8"))
 }
@@ -52,11 +56,20 @@ function avoidsObjectSubset(actual, disallowed = {}) {
   return Object.entries(disallowed).every(([key, value]) => actual[key] !== value)
 }
 
-function summarizeTrack(name, cases, skipped = false) {
+function summarizeTrack(name, cases, options = {}) {
+  const {
+    skipped = false,
+    required = true,
+    runtime = "local",
+    skipReason = null,
+  } = options
   const passedCount = cases.filter((item) => item.passed).length
   return {
     name,
     skipped,
+    required,
+    runtime,
+    skipReason,
     total: cases.length,
     passed: passedCount,
     failed: cases.length - passedCount,
@@ -100,7 +113,10 @@ async function evalLangGraphRouting() {
     )
   }
 
-  return summarizeTrack("langgraph-real-routing", cases)
+  return summarizeTrack("langgraph-real-routing", cases, {
+    required: true,
+    runtime: "node",
+  })
 }
 
 function evalAdkSequential() {
@@ -115,9 +131,13 @@ function evalAdkSequential() {
   )
   const cases = []
 
-  const python = getVenvPython()
-  if (!fs.existsSync(python)) {
-    return summarizeTrack("adk-real-sequential", [], true)
+  if (!hasAdkRuntime()) {
+    return summarizeTrack("adk-real-sequential", [], {
+      skipped: true,
+      required: false,
+      runtime: "python-adk-venv",
+      skipReason: "Local ADK venv not available",
+    })
   }
 
   for (const item of fixture) {
@@ -141,7 +161,10 @@ function evalAdkSequential() {
     )
   }
 
-  return summarizeTrack("adk-real-sequential", cases)
+  return summarizeTrack("adk-real-sequential", cases, {
+    required: false,
+    runtime: "python-adk-venv",
+  })
 }
 
 function evalAdkParallel() {
@@ -156,9 +179,13 @@ function evalAdkParallel() {
   )
   const cases = []
 
-  const python = getVenvPython()
-  if (!fs.existsSync(python)) {
-    return summarizeTrack("adk-real-parallel", [], true)
+  if (!hasAdkRuntime()) {
+    return summarizeTrack("adk-real-parallel", [], {
+      skipped: true,
+      required: false,
+      runtime: "python-adk-venv",
+      skipReason: "Local ADK venv not available",
+    })
   }
 
   for (const item of fixture) {
@@ -184,7 +211,10 @@ function evalAdkParallel() {
     )
   }
 
-  return summarizeTrack("adk-real-parallel", cases)
+  return summarizeTrack("adk-real-parallel", cases, {
+    required: false,
+    runtime: "python-adk-venv",
+  })
 }
 
 function evalAdkSessionState() {
@@ -199,9 +229,13 @@ function evalAdkSessionState() {
   )
   const cases = []
 
-  const python = getVenvPython()
-  if (!fs.existsSync(python)) {
-    return summarizeTrack("adk-real-session-state", [], true)
+  if (!hasAdkRuntime()) {
+    return summarizeTrack("adk-real-session-state", [], {
+      skipped: true,
+      required: false,
+      runtime: "python-adk-venv",
+      skipReason: "Local ADK venv not available",
+    })
   }
 
   for (const item of fixture) {
@@ -228,7 +262,10 @@ function evalAdkSessionState() {
     )
   }
 
-  return summarizeTrack("adk-real-session-state", cases)
+  return summarizeTrack("adk-real-session-state", cases, {
+    required: false,
+    runtime: "python-adk-venv",
+  })
 }
 
 function evalAdkHitl() {
@@ -242,9 +279,13 @@ function evalAdkHitl() {
     "tool_confirmation_demo.py"
   )
 
-  const python = getVenvPython()
-  if (!fs.existsSync(python)) {
-    return summarizeTrack("adk-real-hitl", [], true)
+  if (!hasAdkRuntime()) {
+    return summarizeTrack("adk-real-hitl", [], {
+      skipped: true,
+      required: false,
+      runtime: "python-adk-venv",
+      skipReason: "Local ADK venv not available",
+    })
   }
 
   const output = runPythonJson(script).value
@@ -320,7 +361,10 @@ function evalAdkHitl() {
     )
   )
 
-  return summarizeTrack("adk-real-hitl", cases)
+  return summarizeTrack("adk-real-hitl", cases, {
+    required: false,
+    runtime: "python-adk-venv",
+  })
 }
 
 function pathToFileUrl(filePath) {
@@ -339,12 +383,20 @@ async function runFrameworkEvals() {
 
   const executedTracks = tracks.filter((track) => !track.skipped)
   const skippedTracks = tracks.filter((track) => track.skipped).map((track) => track.name)
+  const skippedRequiredTracks = tracks
+    .filter((track) => track.skipped && track.required)
+    .map((track) => track.name)
+  const skippedOptionalTracks = tracks
+    .filter((track) => track.skipped && !track.required)
+    .map((track) => track.name)
   const totalCases = executedTracks.reduce((sum, track) => sum + track.total, 0)
   const totalPassed = executedTracks.reduce((sum, track) => sum + track.passed, 0)
 
   return {
     totalTracks: tracks.length,
     skippedTracks,
+    skippedRequiredTracks,
+    skippedOptionalTracks,
     totalCases,
     totalPassed,
     totalFailed: totalCases - totalPassed,
@@ -357,7 +409,7 @@ async function main() {
   const summary = await runFrameworkEvals()
   console.log(JSON.stringify(summary, null, 2))
 
-  if (summary.totalFailed > 0) {
+  if (summary.totalFailed > 0 || summary.skippedRequiredTracks.length > 0) {
     process.exitCode = 1
   }
 }
