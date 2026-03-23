@@ -1,0 +1,19 @@
+{
+  "pending": {
+    "expectedError": "This tool call requires confirmation, please approve or reject.",
+    "expectedConfirmationKey": "publish-release-call",
+    "disallowedStateKey": "shared:publish_status"
+  },
+  "rejected": {
+    "expectedError": "This tool call is rejected.",
+    "disallowedStateKey": "shared:publish_status"
+  },
+  "approved": {
+    "expectedStatus": "published",
+    "expectedChannel": "beta",
+    "expectedState": {
+      "shared:publish_status": "shipped:beta"
+    },
+    "expectedNoPendingConfirmation": true
+  }
+}

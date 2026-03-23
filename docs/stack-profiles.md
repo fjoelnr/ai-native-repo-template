@@ -2,9 +2,9 @@
 
 ## Purpose
 
-The ANR base template is intentionally neutral. Most real repositories still need stack-aware context.
+The ANR base template is intentionally neutral. Most real repositories still need stack-aware or operating-model-aware context.
 
-Stack profiles solve that without coupling ANR to a single tool vendor or framework family.
+Profiles solve that without coupling ANR to a single tool vendor or framework family.
 
 ## Design Rule
 
@@ -18,6 +18,7 @@ Stack profiles solve that without coupling ANR to a single tool vendor or framew
 - [Java Spring](../profiles/java-spring/README.md)
 - [PlatformIO IoT](../profiles/platformio-iot/README.md)
 - [MCP Infrastructure](../profiles/mcp-infra/README.md)
+- [Startup OS](../profiles/startup-os/README.md)
 
 ## How To Apply A Profile
 

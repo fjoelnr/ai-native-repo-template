@@ -1,0 +1,30 @@
+[
+  {
+    "id": "session-state-persistence",
+    "message": "store launch state",
+    "expectedEventCount": 2,
+    "expectedSessionState": {
+      "app:goal": "launch-mvp",
+      "app:risk_level": "medium",
+      "shared:stage": "review",
+      "user:approval_required": "true"
+    },
+    "disallowedSessionState": {
+      "shared:stage": "brief"
+    }
+  },
+  {
+    "id": "session-state-empty-message-still-persists-final-review-state",
+    "message": "",
+    "expectedEventCount": 2,
+    "expectedSessionState": {
+      "app:goal": "launch-mvp",
+      "app:risk_level": "medium",
+      "shared:stage": "review",
+      "user:approval_required": "true"
+    },
+    "disallowedSessionState": {
+      "shared:stage": "brief"
+    }
+  }
+]

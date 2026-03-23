@@ -1,0 +1,37 @@
+[
+  {
+    "id": "order-status-route",
+    "input": "check order status for order 123",
+    "expectedRoute": "order-status",
+    "expectedOutput": "Fetch order status flow",
+    "expectedVisited": ["classifier", "order-status-node"]
+  },
+  {
+    "id": "product-info-route",
+    "input": "pricing details for the product",
+    "expectedRoute": "product-info",
+    "expectedOutput": "Search product information flow",
+    "expectedVisited": ["classifier", "product-info-node"]
+  },
+  {
+    "id": "support-route",
+    "input": "the login support flow is broken",
+    "expectedRoute": "technical-support",
+    "expectedOutput": "Run support troubleshooting flow",
+    "expectedVisited": ["classifier", "technical-support-node"]
+  },
+  {
+    "id": "clarification-fallback-route",
+    "input": "hello there",
+    "expectedRoute": "clarification",
+    "expectedOutput": "Ask clarifying question",
+    "expectedVisited": ["classifier", "clarification-node"]
+  },
+  {
+    "id": "empty-input-fallback-route",
+    "input": "",
+    "expectedRoute": "clarification",
+    "expectedOutput": "Ask clarifying question",
+    "expectedVisited": ["classifier", "clarification-node"]
+  }
+]

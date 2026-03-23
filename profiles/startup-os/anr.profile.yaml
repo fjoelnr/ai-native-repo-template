@@ -1,0 +1,31 @@
+profile_id: startup-os
+category: operating-model
+focus:
+  - solo-builder
+  - startup-operations
+  - fast-iteration
+  - experiment-driven-execution
+recommended_docs:
+  - docs/experiments.md
+  - docs/launch-checklist.md
+  - docs/metrics.md
+  - docs/claims-and-risk.md
+recommended_skills:
+  - rapid-prototyper
+  - spec-writer
+  - growth-experimenter
+  - qa-reviewer
+  - analytics-interpreter
+  - compliance-precheck
+recommended_workflows:
+  - build-mvp
+  - run-growth-experiment
+  - ship-weekly-release
+recommended_guardrails:
+  - evidence-over-claim
+  - human-approval-required
+  - no-fake-readiness
+registry_packs:
+  skills: registry/skills/startup-os
+  workflows: registry/workflows/startup-os
+  guardrails: registry/guardrails/startup-os

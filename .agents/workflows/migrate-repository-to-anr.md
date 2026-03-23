@@ -1,3 +1,61 @@
+---
+anr:
+  kind: workflow
+  version: 0.2
+workflow:
+  id: migrate-repository-to-anr
+  title: Migrate Repository To ANR
+  intent: Upgrade an existing repository into ANR structure with minimal disruption and explicit context layers.
+  category: migration
+  triggers:
+    - repository migration
+    - structure standardization
+    - ai-native adoption
+  inputs:
+    required:
+      - existing_repository_structure
+    optional:
+      - current_docs
+      - build_tooling
+      - team_conventions
+  outputs:
+    - AGENTS.md
+    - context_index
+    - local_agent_guides
+    - workflows
+    - guardrails
+    - validation_result
+  steps:
+    - id: inspect
+      title: Inspect the existing repository structure
+    - id: global-context
+      title: Generate global repository context
+    - id: repository-map
+      title: Create the repository map
+    - id: local-context
+      title: Add directory-level context
+    - id: workflows
+      title: Extract practical workflows
+    - id: guardrails
+      title: Define explicit guardrails
+    - id: validate
+      title: Validate ANR compliance
+  quality_gates:
+    - major_directories_mapped
+    - context_is_versioned
+    - validation_passes
+  approvals:
+    required: false
+  failure_modes:
+    - structure_copied_without_matching_repo_reality
+    - missing_local_context_for_high_risk_areas
+    - migration_stops_at_prompt_file_only
+  success_criteria:
+    - repository_has_anr_core_structure
+    - context_is_localized_near_complexity
+    - workflows_and_guardrails_exist
+---
+
 # Workflow: Migrate Repository to ANR
 
 ## Purpose

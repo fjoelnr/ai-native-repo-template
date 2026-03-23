@@ -1,0 +1,16 @@
+{
+  "name": "agentic-patterns-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test",
+    "eval:frameworks": "node tests/evaluations/framework-evals.js",
+    "scorecard:frameworks": "node tests/evaluations/framework-scorecard.js --write-report",
+    "baseline:refresh:frameworks": "node tests/evaluations/framework-scorecard.js --refresh-baseline"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.0.0",
+    "@langchain/langgraph": "^1.0.0"
+  }
+}

@@ -1,0 +1,69 @@
+anr_version: 0.2
+
+repository:
+  name: example-repo
+  type: application
+
+agent_interface:
+  global_context: AGENTS.md
+  repository_map: .agents/context-index.md
+
+directories:
+  source: src
+  tests: tests
+  tools: tools
+  documentation: docs
+
+agent_components:
+  skills: .agents/skills
+  workflows: .agents/workflows
+  guardrails: .agents/guardrails
+
+capabilities:
+  migration_supported: true
+  validation_supported: true
+  workflow_metadata: true
+  skill_metadata: true
+  memory_contract: false
+  runtime_contract: false
+  evals_contract: false
+
+metadata_contracts:
+  workflows:
+    routing: true
+    approvals: true
+    memory_touchpoints: true
+    eval_hooks: true
+  skills:
+    routing: true
+    approvals: true
+    memory_touchpoints: true
+    eval_hooks: true
+
+runtime:
+  mcp_servers: []
+  local_tools: []
+  privileged_operations: []
+
+memory:
+  enabled: false
+  paths:
+    summaries: .memory/summaries
+    decisions: .memory/decisions
+    working_state: .memory/working
+  policy:
+    source_of_truth: versioned_files
+    retention: local_policy
+
+evals:
+  enabled: false
+  paths:
+    tasks: evals/tasks
+    fixtures: evals/fixtures
+    reports: evals/reports
+  quality_gates: []
+
+registry:
+  profile: base
+  skill_packs: []
+  workflow_packs: []
