@@ -27,7 +27,7 @@ Use this profile when a repository is intended to support a solo builder or very
 
 ## Start Here
 
-1. merge `AGENTS.fragment.md` into the repository `AGENTS.md`
+1. run `node tools/anr-cli/index.js apply-profile startup-os`
 2. add the recommended startup operating docs before broadening the agent pack
-3. install the pack with `node tools/anr-cli/index.js install-pack startup-os`
+3. use `node tools/anr-cli/index.js install-pack startup-os` only if you want the pack without the full profile application
 4. keep legal, compliance, finance, and material spending behind human approval

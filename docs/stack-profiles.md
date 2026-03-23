@@ -24,8 +24,8 @@ Profiles solve that without coupling ANR to a single tool vendor or framework fa
 
 1. start from the base ANR template
 2. choose the closest profile in [`profiles/`](../profiles/README.md)
-3. merge the profile's `AGENTS.fragment.md` into the repo-level `AGENTS.md`
-4. add the recommended docs, skills, workflows, and guardrails
+3. run `node tools/anr-cli/index.js apply-profile <profile-id>` or merge the profile's `AGENTS.fragment.md` manually
+4. add or trim the recommended docs, skills, workflows, and guardrails to fit the real repository
 5. remove anything that does not match the real repository
 
 ## Why Profiles Matter

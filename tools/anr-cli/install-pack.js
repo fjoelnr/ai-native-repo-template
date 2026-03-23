@@ -144,7 +144,7 @@ function copyPackFiles(repoRoot, targetDir, files) {
   return results
 }
 
-function runInstallPack(packName, repoRoot = process.cwd()) {
+function runInstallPack(packName, repoRoot = process.cwd(), options = {}) {
   if (!packName) {
     throw new Error("Missing pack name. Usage: anr install-pack <pack-name>")
   }
@@ -160,7 +160,12 @@ function runInstallPack(packName, repoRoot = process.cwd()) {
     { registryDir: "skills", targetDir: ".agents/skills" },
     { registryDir: "workflows", targetDir: ".agents/workflows" },
     { registryDir: "guardrails", targetDir: ".agents/guardrails" },
-  ]
+  ].filter(({ registryDir }) => {
+    if (!options.categories || options.categories.length === 0) {
+      return true
+    }
+    return options.categories.includes(registryDir)
+  })
 
   const installedCategories = []
   const summary = []

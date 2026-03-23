@@ -14,7 +14,7 @@ Current profiles:
 How to use a profile:
 
 1. choose the closest profile after creating a new repository from this template
-2. merge the profile's `AGENTS.fragment.md` into the repo `AGENTS.md`
+2. apply it with `node tools/anr-cli/index.js apply-profile <profile-id>` or merge it manually
 3. use the profile checklist to add stack-specific docs, skills, workflows, and guardrails
 4. adapt the examples to the real repository instead of copying them blindly
 
