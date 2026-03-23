@@ -142,10 +142,11 @@ Expected migration sequence:
 git clone <template-repo> my-project
 cd my-project
 node tools/anr-cli/index.js init
+node tools/anr-cli/index.js install-pack startup-os
 node tools/anr-cli/index.js validate
 ```
 
-Then choose a stack profile from `profiles/`, merge the relevant guidance into `AGENTS.md`, and start implementing your domain in `src/`.
+Then choose a stack profile from `profiles/`, merge the relevant guidance into `AGENTS.md`, install only the packs you want to route, and start implementing your domain in `src/`.
 
 ## Template Adoption Checklist
 

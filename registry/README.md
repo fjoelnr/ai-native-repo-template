@@ -14,3 +14,9 @@ It is intended to collect shared building blocks that can be reused across proje
 Starter packs:
 
 - `startup-os` solo-builder and startup operation pack
+
+Install a registry pack into an ANR repository with:
+
+```bash
+node tools/anr-cli/index.js install-pack startup-os
+```
