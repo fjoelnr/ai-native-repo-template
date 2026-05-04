@@ -187,6 +187,58 @@ function addError(errors, message) {
   errors.push(message)
 }
 
+function hasPath(repoRoot, relativePath, type) {
+  return pathExists(repoRoot, relativePath, type)
+}
+
+function detectComplianceLevel(repoRoot, manifestValidation = {}) {
+  const hasLevel1 =
+    hasPath(repoRoot, "AGENTS.md", "file") &&
+    hasPath(repoRoot, ".agents/context-index.md", "file")
+
+  if (!hasLevel1) {
+    return 0
+  }
+
+  const hasCoreDirectories = ["src", "tests", "tools", "docs"].every((dirPath) =>
+    hasPath(repoRoot, dirPath, "dir")
+  )
+  const hasLocalGuides = [
+    "src/AGENT.md",
+    "tests/AGENT.md",
+    "tools/AGENT.md",
+    "docs/AGENT.md",
+  ].every((filePath) => hasPath(repoRoot, filePath, "file"))
+
+  if (!hasCoreDirectories || !hasLocalGuides) {
+    return 1
+  }
+
+  const hasAgentComponents = [
+    ".agents/skills",
+    ".agents/workflows",
+    ".agents/guardrails",
+  ].every((dirPath) => hasPath(repoRoot, dirPath, "dir"))
+
+  if (!hasAgentComponents || !hasPath(repoRoot, "anr.yaml", "file")) {
+    return 2
+  }
+
+  if (!manifestValidation.workflowMetadata || !manifestValidation.skillMetadata) {
+    return 3
+  }
+
+  if (
+    manifestValidation.runtimeContract ||
+    manifestValidation.memoryContract ||
+    manifestValidation.evalsContract
+  ) {
+    return 5
+  }
+
+  return 4
+}
+
 function validateRequiredPath(errors, repoRoot, manifestLines, yamlPath, type) {
   const entry = getYamlScalar(manifestLines, yamlPath)
   const label = yamlPath.join(".")
@@ -267,8 +319,12 @@ function validateManifest(errors, repoRoot) {
   const manifestPath = path.join(repoRoot, "anr.yaml")
   if (!fs.existsSync(manifestPath)) {
     return {
+      manifestExists: false,
       workflowMetadata: false,
       skillMetadata: false,
+      runtimeContract: false,
+      memoryContract: false,
+      evalsContract: false,
     }
   }
 
@@ -381,8 +437,12 @@ function validateManifest(errors, repoRoot) {
   }
 
   return {
+    manifestExists: true,
     workflowMetadata: workflowMetadata.value === true,
     skillMetadata: skillMetadata.value === true,
+    runtimeContract: runtimeContract.value === true,
+    memoryContract: memoryContract.value === true,
+    evalsContract: evalsContract.value === true,
   }
 }
 
@@ -403,6 +463,8 @@ function runValidate(repoRoot = process.cwd()) {
 
   const errors = []
 
+  const manifestValidation = validateManifest(errors, repoRoot)
+
   requiredDirs.forEach((dirPath) => {
     if (!pathExists(repoRoot, dirPath, "dir")) {
       addError(errors, `Missing directory: ${dirPath}/`)
@@ -414,14 +476,6 @@ function runValidate(repoRoot = process.cwd()) {
       addError(errors, `Missing file: ${filePath}`)
     }
   })
-
-  if (errors.length > 0) {
-    errors.forEach((message) => console.log(message))
-    process.exitCode = 1
-    return
-  }
-
-  const manifestValidation = validateManifest(errors, repoRoot)
 
   const workflowValidation = validateMetadataDirectory({
     errors,
@@ -463,15 +517,34 @@ function runValidate(repoRoot = process.cwd()) {
     )
   }
 
+  const complianceLevel = detectComplianceLevel(repoRoot, manifestValidation)
+
   if (errors.length > 0) {
     errors.forEach((message) => console.log(message))
+    console.log(`ANR Level detected: ${complianceLevel}`)
+    console.log("ANR validation failed")
     process.exitCode = 1
-    return
+    return {
+      ok: false,
+      errors,
+      level: complianceLevel,
+      workflowValidation,
+      skillValidation,
+    }
   }
 
-  console.log("ANR validation passed")
+  process.exitCode = 0
+  console.log(`ANR validation passed (level ${complianceLevel})`)
+  return {
+    ok: true,
+    errors,
+    level: complianceLevel,
+    workflowValidation,
+    skillValidation,
+  }
 }
 
 module.exports = {
+  detectComplianceLevel,
   runValidate,
 }

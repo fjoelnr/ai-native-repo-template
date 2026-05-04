@@ -1,5 +1,11 @@
 # ANR Compliance Levels
 
+The authoritative local level check is:
+
+```bash
+node tools/anr-cli/index.js validate
+```
+
 ## Level 1 - Basic ANR
 
 ### MUST include
@@ -12,21 +18,16 @@
 ### MUST include
 
 - all Level 1 requirements
-
-### SHOULD include
-
 - directory-level `AGENT.md` files
-- `.agents/workflows/`
+- `src/`, `tests/`, `tools/`, and `docs/`
 
 ## Level 3 - Full ANR
 
 ### MUST include
 
 - all Level 2 requirements
-
-### SHOULD include
-
 - `.agents/skills/`
+- `.agents/workflows/`
 - `.agents/guardrails/`
 - `anr.yaml`
 
@@ -35,9 +36,6 @@
 ### MUST include
 
 - all Level 3 requirements
-
-### SHOULD include
-
 - workflow front matter in `.agents/workflows/`
 - skill front matter in `.agents/skills/`
 - manifest capability declarations in `anr.yaml`
@@ -47,9 +45,5 @@
 ### MUST include
 
 - all Level 4 requirements
-
-### SHOULD include
-
 - runtime capability declarations
-- optional memory conventions
-- evaluation assets and quality gates
+- optional memory conventions or evaluation assets when enabled
