@@ -10,6 +10,7 @@ ANR v0.1 defines the minimum repository structure required for coding agents to 
 
 ANR v0.2 keeps that structure intact and adds optional, machine-usable metadata for:
 
+- context budgets
 - workflows
 - skills
 - repository capabilities
@@ -57,8 +58,42 @@ Recommended but optional:
 
 - local `AGENT.md` files near complex areas
 - `anr.yaml`
+- `.agents/archive/` for historical agent notes that should not load by default
 
-## 4. Workflow File Format
+## 4. Context Budget
+
+ANR v0.2 introduces an optional context budget model for repositories that want to make agent context loading explicit.
+
+The model is descriptive in v0.2. It documents intent and examples, but does not require hard validation.
+
+### 4.1 Context Classes
+
+- `startup` context is loaded or read first in normal agent sessions.
+- `on_demand` context is available through indexes and should be read only when the task calls for it.
+- `archive` context stores old sessions, completed tasks, and historical notes that should not be read automatically.
+- `runtime` context is produced by tools, MCP servers, command output, code graphs, memory systems, or dashboards.
+
+### 4.2 Principles
+
+- keep startup context short and stable
+- prefer indexes and summaries before full documents
+- promote repeated runtime learnings into versioned repository truth
+- keep historical notes out of startup context
+- use compact tool output for large searches, logs, tests, and generated reports
+
+### 4.3 Progressive Context Index
+
+`.agents/context-index.md` should act as a progressive disclosure index, not only a directory list.
+
+Recommended entry fields:
+
+- `path`
+- `purpose`
+- `read_when`
+- `source_of_truth`
+- `context_cost` (`low`, `medium`, `high`, or repo-defined)
+
+## 5. Workflow File Format
 
 Workflow files remain Markdown, but may now include YAML front matter.
 
@@ -66,7 +101,7 @@ Location:
 
 - `.agents/workflows/*.md`
 
-### 4.1 Workflow Front Matter
+### 5.1 Workflow Front Matter
 
 ```yaml
 ---
@@ -133,7 +168,7 @@ workflow:
 ---
 ```
 
-### 4.2 Workflow Body
+### 5.2 Workflow Body
 
 The Markdown body should remain human-readable and explain:
 
@@ -142,7 +177,7 @@ The Markdown body should remain human-readable and explain:
 - common pitfalls
 - references to relevant guardrails
 
-### 4.3 Required Fields
+### 5.3 Required Fields
 
 If front matter is present, these fields are required:
 
@@ -152,7 +187,7 @@ If front matter is present, these fields are required:
 - `workflow.title`
 - `workflow.intent`
 
-### 4.4 Optional Fields
+### 5.4 Optional Fields
 
 Optional but recommended:
 
@@ -169,7 +204,7 @@ Optional but recommended:
 - `workflow.failure_modes`
 - `workflow.success_criteria`
 
-## 5. Skill File Format
+## 6. Skill File Format
 
 Skill files also remain Markdown with optional YAML front matter.
 
@@ -177,7 +212,7 @@ Location:
 
 - `.agents/skills/*.md`
 
-### 5.1 Skill Front Matter
+### 6.1 Skill Front Matter
 
 ```yaml
 ---
@@ -230,7 +265,7 @@ skill:
 ---
 ```
 
-### 5.2 Skill Body
+### 6.2 Skill Body
 
 The Markdown body should describe:
 
@@ -239,7 +274,7 @@ The Markdown body should describe:
 - what quality bar to apply
 - expected reporting style
 
-### 5.3 Required Fields
+### 6.3 Required Fields
 
 If front matter is present, these fields are required:
 
@@ -249,7 +284,7 @@ If front matter is present, these fields are required:
 - `skill.title`
 - `skill.summary`
 
-### 5.4 Optional Fields
+### 6.4 Optional Fields
 
 Optional but recommended:
 
@@ -264,11 +299,11 @@ Optional but recommended:
 - `skill.eval_hooks`
 - `skill.constraints`
 
-## 6. Manifest Format
+## 7. Manifest Format
 
 `anr.yaml` becomes the main machine-readable manifest.
 
-### 6.1 Required Manifest Fields
+### 7.1 Required Manifest Fields
 
 ```yaml
 anr_version: 0.2
@@ -293,7 +328,7 @@ agent_components:
   guardrails: .agents/guardrails
 ```
 
-### 6.2 Extended Manifest Fields
+### 7.2 Extended Manifest Fields
 
 The following sections are optional.
 
@@ -318,6 +353,26 @@ metadata_contracts:
     approvals: true
     memory_touchpoints: true
     eval_hooks: true
+
+context_budget:
+  startup:
+    max_files_guidance: 3
+    includes:
+      - AGENTS.md
+      - .agents/context-index.md
+      - nearest AGENT.md
+  on_demand:
+    examples:
+      - docs/
+      - .agents/workflows/
+      - .agents/skills/
+      - .agents/guardrails/
+  archive:
+    path: .agents/archive
+    load_by_default: false
+  runtime:
+    compact_outputs: true
+    raw_output_recovery: preferred
 
 runtime:
   mcp_servers:
@@ -358,31 +413,31 @@ registry:
   workflow_packs: []
 ```
 
-## 7. Memory Contract
+## 8. Memory Contract
 
 ANR v0.2 does not require a memory system, but it defines conventions for repositories that use one.
 
-### 7.1 Principles
+### 8.1 Principles
 
 - memory is optional
 - memory accelerates execution, but does not replace versioned documentation
 - stable knowledge should be promoted into docs or `AGENT.md` files
 
-### 7.2 Suggested Paths
+### 8.2 Suggested Paths
 
 - `.memory/summaries/`
 - `.memory/decisions/`
 - `.memory/working/`
 - `.memory/index/`
 
-### 7.3 Suggested Classes
+### 8.3 Suggested Classes
 
 - `rule` for durable behavioral rules
 - `fact` for stable project knowledge
 - `episode` for task-specific history
 - `working` for transient current-session state
 
-## 8. Evaluation Contract
+## 9. Evaluation Contract
 
 ANR v0.2 introduces optional evaluation assets.
 
@@ -401,13 +456,13 @@ Suggested task file fields:
 - evaluation rubric
 - pass/fail checks
 
-## 9. Validation Rules
+## 10. Validation Rules
 
-### 9.1 Core Validation
+### 10.1 Core Validation
 
 An `ANR Core` repository passes validation if it contains the v0.1 required structure.
 
-### 9.2 Metadata Validation
+### 10.2 Metadata Validation
 
 If a workflow or skill declares front matter:
 
@@ -416,43 +471,45 @@ If a workflow or skill declares front matter:
 - identifiers must be unique within their directory
 - routing, approval, memory, and evaluation fields should match the manifest's declared metadata contract when enabled
 
-### 9.3 Manifest Validation
+### 10.3 Manifest Validation
 
 If `anr.yaml` declares runtime, memory, or eval sections:
 
 - referenced directories should exist or be explicitly marked as future/disabled
 - capability flags should match declared sections
+- `context_budget` fields are advisory in v0.2 and should not fail Core validation
 
-## 10. Compliance Profiles
+## 11. Compliance Profiles
 
-### 10.1 ANR Core
+### 11.1 ANR Core
 
 Minimum repository structure for AI-readable repositories.
 
-### 10.2 ANR Structured
+### 11.2 ANR Structured
 
 ANR Core plus typed workflow and skill metadata.
 
-### 10.3 ANR Runtime
+### 11.3 ANR Runtime
 
 ANR Structured plus runtime capability declarations.
 
-### 10.4 ANR Evals
+### 11.4 ANR Evals
 
 ANR Structured plus evaluation assets and quality gates.
 
-## 11. Migration Guidance
+## 12. Migration Guidance
 
 Recommended migration order:
 
 1. establish `ANR Core`
 2. add `anr.yaml`
-3. add workflow front matter
-4. add skill front matter
-5. declare runtime capabilities
-6. add memory and eval conventions where useful
+3. add context budget guidance and a progressive context index
+4. add workflow front matter
+5. add skill front matter
+6. declare runtime capabilities
+7. add memory and eval conventions where useful
 
-## 12. Non-Goals
+## 13. Non-Goals
 
 ANR v0.2 does not standardize:
 

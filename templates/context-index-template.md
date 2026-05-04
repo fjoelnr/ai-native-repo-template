@@ -1,7 +1,7 @@
-# Repository Context Index
+# Repository Context Index Template
 
 Use this file as the progressive disclosure map for AI agents.
-Read the index first, then open only the context entries that match the task.
+The goal is to read the index first, then open only task-relevant context.
 
 ## Startup Context
 
@@ -18,13 +18,10 @@ Read the index first, then open only the context entries that match the task.
 | `src/` | Application source code | Implementing or reviewing runtime behavior | Yes | high |
 | `tests/` | Automated tests and test conventions | Changing behavior or validating regressions | Yes | medium |
 | `tools/` | Developer scripts and utilities | Updating scripts or using repo tooling | Yes | medium |
-| `docs/` | Project documentation and specifications | Updating behavior, architecture, positioning, or ANR docs | Yes | medium |
+| `docs/` | Project documentation and specifications | Updating behavior, architecture, or docs | Yes | medium |
 | `.agents/workflows/` | Repeatable procedures for agent work | A task matches a workflow trigger | Yes | low |
 | `.agents/skills/` | Reusable reasoning patterns | A task needs specialist reasoning | Yes | low |
-| `.agents/guardrails/` | Constraints agents must respect | Before risky, architectural, or policy-sensitive work | Yes | low |
-| `templates/` | Reusable context templates | Creating new ANR files or examples | Yes | low |
-| `profiles/` | Stack-specific overlays | Applying or reviewing a stack profile | Yes | medium |
-| `registry/` | Reusable workflow, skill, and guardrail packs | Installing or curating shared ANR assets | Yes | medium |
+| `.agents/guardrails/` | Constraints agents must respect | Before risky or policy-sensitive work | Yes | low |
 
 ## Archive Context
 
@@ -32,11 +29,12 @@ Read the index first, then open only the context entries that match the task.
 |---|---|---|---|---|
 | `.agents/archive/` | Historical agent notes, completed task records, and old session material | Only when explicitly investigating history | No | high |
 
-Historical notes should not load by default. Repeated learnings should be promoted into `docs/`, local `AGENT.md` files, workflows, skills, or guardrails.
+Archive context should not load by default.
+Promote repeated learnings into `docs/`, local `AGENT.md` files, workflows, skills, or guardrails.
 
 ## Runtime Context
 
-Runtime context comes from tool output, MCP servers, local dashboards, generated reports, code graphs, or memory systems.
+Runtime context comes from tool output, MCP servers, generated reports, code graphs, memory systems, or dashboards.
 
 Prefer compact summaries before raw output:
 

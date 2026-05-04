@@ -27,6 +27,8 @@ workflow:
       title: Read repository and local context
     - id: confirm-scope
       title: Confirm acceptance criteria and boundaries
+    - id: summarize-context
+      title: Summarize large context before reading broadly
     - id: implement
       title: Implement a minimal change in source code
     - id: validate
@@ -61,14 +63,16 @@ Use this workflow when implementing a new capability or extending an existing on
 
 1. Read `AGENTS.md`, `.agents/context-index.md`, and the nearest directory `AGENT.md`.
 2. Confirm acceptance criteria, boundaries, and any explicit non-goals.
-3. Implement the smallest coherent change in `src/`.
-4. Add or update tests in `tests/` to cover the changed behavior.
-5. Update docs if behavior, interfaces, or operating assumptions changed.
-6. Prepare concise review notes covering scope, validation, and residual risk.
+3. Use search, scripts, indexes, or compact tool output before loading large files, logs, generated reports, or broad source trees.
+4. Implement the smallest coherent change in `src/`.
+5. Add or update tests in `tests/` to cover the changed behavior.
+6. Update docs if behavior, interfaces, or operating assumptions changed.
+7. Prepare concise review notes covering scope, validation, and residual risk.
 
 ## Common pitfalls
 
 - Expanding scope during implementation without re-checking the original goal.
+- Loading broad context before checking the index, search results, or compact summaries.
 - Changing behavior without adding or updating tests.
 - Leaving docs stale when interfaces or operating rules changed.
 
@@ -76,3 +80,4 @@ Use this workflow when implementing a new capability or extending an existing on
 
 - `.agents/guardrails/architecture-rules.md`
 - `.agents/guardrails/forbidden-zones.md`
+- `.agents/guardrails/agent-quality-rules.md`

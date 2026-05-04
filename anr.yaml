@@ -28,6 +28,26 @@ capabilities:
   runtime_contract: true
   evals_contract: false
 
+context_budget:
+  startup:
+    max_files_guidance: 3
+    includes:
+      - AGENTS.md
+      - .agents/context-index.md
+      - nearest AGENT.md
+  on_demand:
+    examples:
+      - docs/
+      - .agents/workflows/
+      - .agents/skills/
+      - .agents/guardrails/
+  archive:
+    path: .agents/archive
+    load_by_default: false
+  runtime:
+    compact_outputs: true
+    raw_output_recovery: preferred
+
 runtime:
   mcp_servers: []
   local_tools:

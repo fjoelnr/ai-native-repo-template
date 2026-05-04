@@ -49,6 +49,7 @@ Recent ecosystem work also points beyond static repository structure into adjace
 - persistent memory and recall
 - tool fabrics built around MCP
 - retrieval-backed project context
+- context efficiency, token budgets, and graph-backed repository navigation
 
 These patterns do not replace ANR's core position, but they do inform the next likely ANR extensions.
 
@@ -75,3 +76,4 @@ ANR builds on AGENTS.md and complements MCP:
 See also:
 
 - [ANR Evolution](anr-evolution.md)
+- [Context Efficiency Ecosystem Review](context-efficiency-ecosystem-review.md)

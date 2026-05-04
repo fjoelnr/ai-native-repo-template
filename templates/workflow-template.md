@@ -25,6 +25,8 @@ workflow:
       title: First step
     - id: step-2
       title: Second step
+    - id: summarize-context
+      title: Summarize large context before reading broadly
   quality_gates:
     - required_quality_check
   approvals:
@@ -53,11 +55,13 @@ Explain when to use this workflow.
 
 1. First step.
 2. Second step.
-3. Validation step.
+3. Use scripts, search, indexes, or compact tool output before loading large files, logs, or generated reports.
+4. Validation step.
 
 ## Common pitfalls
 
 - List typical errors or ambiguity points.
+- Avoid dumping large command output into agent context when a compact summary would answer the question.
 
 ## Related guardrails
 
